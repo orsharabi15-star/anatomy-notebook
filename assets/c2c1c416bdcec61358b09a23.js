@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-go-spl]').forEach(b=>b.onclick=()=>parent.postMessage({type:'notebook-open-section',lesson:'terminology',section:'joints'},'*'));

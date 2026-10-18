@@ -1,0 +1,1 @@
+window.addEventListener('message',e=>{if(e.source!==parent)return;if(e.data?.type==='notebook-print')window.print();if(e.data?.type==='notebook-section')document.getElementById(e.data.section)?.scrollIntoView({behavior:'smooth'})});
