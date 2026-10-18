@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-open-lesson]').forEach(b=>b.onclick=()=>parent.postMessage({type:'notebook-open-section',lesson:b.dataset.openLesson,section:b.dataset.openSection},'*'));
