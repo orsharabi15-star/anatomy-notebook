@@ -35,6 +35,16 @@
 </style>
 <style>.reference-gallery{margin:24px 0}.reference-gallery h3{font-size:1.08rem}.reference-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.reference-grid.single{grid-template-columns:minmax(0,1fr);max-width:920px;margin:auto}.reference-card{margin:0;background:#fff;border:1px solid #d3e1df;border-radius:14px;overflow:hidden}.figure-open{position:relative;display:block;width:100%;padding:12px;border:0;border-bottom:1px solid #e1e9e8;background:#f8faf9;border-radius:0;cursor:zoom-in}.figure-open img{display:block;width:100%;height:auto;max-height:430px;object-fit:contain}.figure-enlarge{position:absolute;bottom:10px;left:10px;background:#fffffff2;border:1px solid #bdd5cf;color:#16584f;border-radius:7px;padding:4px 8px;font-size:.75rem}.reference-card figcaption{display:grid;gap:9px;padding:15px;line-height:1.65}.reference-card figcaption b{font-size:.96rem}.reference-card figcaption span{font-size:.91rem}.reference-card small{font-size:.75rem;color:#5a716b}.figure-viewer{width:96vw;height:94dvh;max-width:1500px;border:0;border-radius:14px;padding:14px;background:#f7fafa;color:#143f3a}.figure-viewer::backdrop{background:#07131ce8}.figure-viewer-head{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.figure-viewer-head strong{flex:1}.figure-scroll{height:calc(100% - 85px);overflow:auto;display:flex;align-items:flex-start;justify-content:center;background:#e5ebea}.figure-image{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:white}.figure-viewer.zoomed .figure-image{max-width:none;max-height:none;flex-shrink:0}.figure-caption{font-size:.82rem;color:#4d6862;margin:8px 0}@media(max-width:700px){.reference-grid{grid-template-columns:1fr}.figure-open img{max-height:450px}.figure-viewer{width:98vw;padding:10px}.figure-scroll{height:calc(100% - 105px)}}@media print{.figure-open{padding:0}.figure-enlarge{display:none}.reference-card{break-inside:avoid}.figure-open img{max-height:400px}.reference-card small{font-size:8pt}}</style>
 <style>.reading-lead{font-size:1.08rem;line-height:1.95;color:#203d46;margin:14px 0 20px}.reading-core>p{max-width:78ch;line-height:1.95}.reading-core h3{font-size:1.08rem;margin:22px 0 10px}.remember{border-inline-start:4px solid #278374;border-radius:8px;background:#ecf6f1;padding:13px 17px;margin:22px 0;font-size:.96rem;line-height:1.8}.remember b{display:block;color:#176557;margin-bottom:4px}.reading-details{background:#f7f9fa;border:1px solid #d9e3e4;border-radius:10px;padding:12px 16px;margin:18px 0}.reading-details>summary{font-weight:600;color:#48636c}.reading-details .correction:before{content:none}.learning-model{border:1px solid #d3e0df;border-radius:12px;margin:16px 0;padding:12px}.learning-model>summary{font-size:.95rem;font-weight:bold;color:#285d57;padding:4px}.learning-model .lab{margin-top:12px}.reading-visuals{margin-top:20px}.reading-visuals>.reference-gallery>h3{font-size:1rem}.reading-visuals .reference-card figcaption{line-height:1.7}.source-compact{margin:20px 0}.lesson-route{padding:12px 16px;background:#e9f2f0;border-radius:10px;font-size:.92rem}.lesson-route button{margin:4px 5px;font-size:.9rem}.revision-note{font-size:.88rem;line-height:1.8;background:#f1f6f5;padding:14px;border-radius:10px;margin:16px 0}.reference-credit-details{font-size:.75rem;color:#5a716b}.reference-credit-details summary{font-size:.75rem}.reading-core table{line-height:1.75}.reading-core th{font-size:.9rem}.reading-core td{font-size:.93rem}.contextual-skeleton .skeleton-reading p{line-height:1.9}@media(max-width:650px){.reading-lead{font-size:1rem}.sec{padding:20px 16px}.sec h2{font-size:1.35rem}.reading-core table{font-size:.85rem}.learning-model{padding:8px}.reading-core td,.reading-core th{padding:9px}}</style>
+<style>
+.bone-models{margin:22px 0 4px}
+.bone-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.bone-view{margin:0;background:#fff;border:1px solid #d3e1df;border-radius:14px;overflow:hidden}
+.bone-view model-viewer{display:block;width:100%;min-height:300px;height:300px;background:#f4f7fa;--poster-color:#f4f7fa}
+.bone-view.large{max-width:920px;margin:22px auto}
+.bone-view.large model-viewer{min-height:420px;height:420px}
+.bone-view figcaption{padding:12px 14px;line-height:1.6;font-size:.96rem}
+</style>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -249,6 +259,15 @@
 </div>
 </div>
 </div>
+<div class="bone-models" data-learning-asset="true">
+<div class="bone-grid">
+<figure class="bone-view"><model-viewer alt="עצם הבריח" camera-controls loading="lazy" src="../assets/upper-limb-3d/clavicle.glb"></model-viewer><figcaption>עצם הבריח <span dir="ltr">Clavicle</span></figcaption></figure>
+<figure class="bone-view"><model-viewer alt="עצם השכם" camera-controls loading="lazy" src="../assets/upper-limb-3d/scapula.glb"></model-viewer><figcaption>עצם השכם <span dir="ltr">Scapula</span></figcaption></figure>
+<figure class="bone-view"><model-viewer alt="עצם הזרוע" camera-controls loading="lazy" src="../assets/upper-limb-3d/humerus.glb"></model-viewer><figcaption>עצם הזרוע <span dir="ltr">Humerus</span></figcaption></figure>
+<figure class="bone-view"><model-viewer alt="רדיוס" camera-controls loading="lazy" src="../assets/upper-limb-3d/radius.glb"></model-viewer><figcaption>רדיוס <span dir="ltr">Radius</span></figcaption></figure>
+<figure class="bone-view"><model-viewer alt="אולנה" camera-controls loading="lazy" src="../assets/upper-limb-3d/ulna.glb"></model-viewer><figcaption>אולנה <span dir="ltr">Ulna</span></figcaption></figure>
+</div>
+</div>
 </div>
 <div class="personal"><label for="note-ul-bones">ההערות שלי</label><textarea data-note="ul-bones" id="note-ul-bones" placeholder="דגש מהשיעור, שאלה או תוספת…"></textarea></div>
 </section>
@@ -344,6 +363,7 @@
 </div>
 </div>
 </div>
+<figure class="bone-view large" data-learning-asset="true"><model-viewer alt="מפרק הכתף: בריח, שכם וזרוע" camera-controls loading="lazy" src="../assets/upper-limb-3d/shoulder.glb"></model-viewer><figcaption>מפרק הכתף - בריח, שכם וזרוע</figcaption></figure>
 </div>
 <div class="personal"><label for="note-ul-shoulder">ההערות שלי</label><textarea data-note="ul-shoulder" id="note-ul-shoulder" placeholder="דגש מהשיעור, שאלה או תוספת…"></textarea></div>
 </section>
@@ -533,6 +553,7 @@
 </div>
 </div>
 </div>
+<figure class="bone-view large" data-learning-asset="true"><model-viewer alt="מפרק המרפק: זרוע, רדיוס ואולנה" camera-controls loading="lazy" src="../assets/upper-limb-3d/elbow.glb"></model-viewer><figcaption>מפרק המרפק - זרוע, רדיוס ואולנה</figcaption></figure>
 </div>
 <div class="personal"><label for="note-ul-arm">ההערות שלי</label><textarea data-note="ul-arm" id="note-ul-arm" placeholder="דגש מהשיעור, שאלה או תוספת…"></textarea></div>
 </section>
@@ -616,6 +637,7 @@
 </div>
 </div>
 </div>
+<figure class="bone-view large" data-learning-asset="true"><model-viewer alt="עצמות כף היד" camera-controls loading="lazy" src="../assets/upper-limb-3d/hand.glb"></model-viewer><figcaption>עצמות כף היד</figcaption></figure>
 </div>
 <div class="personal"><label for="note-ul-hand">ההערות שלי</label><textarea data-note="ul-hand" id="note-ul-hand" placeholder="דגש מהשיעור, שאלה או תוספת…"></textarea></div>
 </section>
@@ -668,6 +690,7 @@
 <h2>מקורות והיקף</h2>
 <p><b>מקור יחיד:</b> סיכום אנטומיה א׳ (עומר ששקין, 2024), עמודים 42-90 ב-PDF, שיעורים 7-12. שיעורים 7-11: ד״ר נדב בנדל. שיעור 12: ד״ר בוריס סוקולובסקי. האיורים הועתקו מתיקיית המקור של אותו סיכום, בלי קישור חיצוני.</p>
 <p>הבוחן נבנה רק משאלות ומהבחנות שמופיעות בסיכום. אין כאן חומר מספר לימוד אחר.</p>
+<p>מודלי התלת-מימד: BodyParts3D © DBCLS, CC BY-SA</p>
 </section>
 
 <footer>המחברת של אור · שיעורים 7-12 · גף עליון</footer>
