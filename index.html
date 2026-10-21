@@ -1,18 +1,280 @@
-<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>המחברת של אור | אנטומיה</title><style>*{box-sizing:border-box}body{margin:0;background:#f1f5f6;font-family:Arial,Helvetica,sans-serif;color:#163b3b}.notebook-top{padding:13px 24px;background:#fff;border-bottom:1px solid #d7e2e4;display:flex;align-items:center;gap:20px;flex-wrap:wrap}.brand{font-size:1.1rem;font-weight:700}.notebook-tabs{display:flex;gap:8px;flex-wrap:wrap}.notebook-tabs button{font:inherit;padding:10px 18px;border:1px solid #b9d0cf;border-radius:12px;background:#fff;color:#174d4a;cursor:pointer}.notebook-tabs button[aria-pressed=true]{background:#1b746d;color:#fff;border-color:#1b746d}.notebook-tabs button:focus-visible{outline:3px solid #e5b359;outline-offset:2px}iframe{display:block;border:0;width:100%;height:calc(100dvh - 86px);min-height:450px;background:#f1f5f6}.lesson-status{font-size:.85rem;color:#4c6968;margin-right:auto}@media(max-width:650px){.notebook-top{padding:10px 12px;gap:10px}.notebook-tabs button{padding:9px 12px}.lesson-status{display:none}iframe{height:calc(100dvh - 112px)}}@media print{.notebook-top{display:none}iframe{height:100vh}}body{height:100dvh;display:flex;flex-direction:column;overflow:hidden}.notebook-top{flex:none}iframe{flex:1;min-height:0;height:auto}@media(max-width:650px){.notebook-tabs{flex-wrap:nowrap;overflow-x:auto;width:100%;padding:3px}.notebook-tabs button{flex:none}.notebook-top{gap:6px}iframe{height:auto}}
-</style></head><body><header class="notebook-top"><div class="brand">המחברת של אור · אנטומיה</div><nav class="notebook-tabs" aria-label="בחירת שיעור"><button data-lesson="terminology" aria-pressed="false">1 · מינוח ומפרקים</button><button data-lesson="connective" aria-pressed="true">2 · רקמות חיבור</button><button data-lesson="epithelium" aria-pressed="false">אפיתל · Epithelium</button><button data-lesson="muscle" aria-pressed="false">3 · רקמת שריר</button><button data-lesson="spine" aria-pressed="false">4 · עמוד השדרה</button><button data-lesson="flashcards" aria-pressed="false">כרטיסיות חזרה</button><button data-lesson="question-bank" aria-pressed="false">בוחן · מאגר השאלות</button></nav><span class="lesson-status">הערות והתקדמות נשמרות בדפדפן הזה</span></header><iframe id="lesson-frame" title="סיכום השיעור" allow="fullscreen" ></iframe><script type="application/json" id="notebook-lessons">[{"id": "terminology", "title": "מינוח ומפרקים"}, {"id": "connective", "title": "רקמות חיבור"}, {"id": "epithelium", "title": "אפיתל — Epithelium"}, {"id": "muscle", "title": "רקמת שריר"}, {"id": "spine", "title": "4 · עמוד השדרה"}, {"id": "flashcards", "title": "כרטיסיות חזרה"}, {"id": "question-bank", "title": "בוחן · מאגר השאלות"}]</script><script>
-const lessons=JSON.parse(document.getElementById('notebook-lessons').textContent);
-const frame=document.getElementById('lesson-frame');
-function showLesson(id,section){
- const lesson=lessons.find(x=>x.id===id)||lessons[0];
- document.querySelectorAll('[data-lesson]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lesson===lesson.id)));
- frame.title=lesson.title;
- frame.onload=()=>{if(section)frame.contentWindow.postMessage({type:'notebook-section',section},location.origin)};
- frame.src='lessons/'+lesson.id+'.html'+(section?'#'+encodeURIComponent(section):'');
- history.replaceState(null,'','#'+lesson.id+(section?'/'+encodeURIComponent(section):''));
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>המחברת של אור | אנטומיה</title>
+<style>
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:#f1f5f6;font-family:Arial,Helvetica,sans-serif;color:#163b3b;display:flex;flex-direction:column;overflow:hidden}
+.notebook-top{flex:none;padding:13px 24px;background:#fff;border-bottom:1px solid #d7e2e4;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font-size:1.1rem;font-weight:700}
+.notebook-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.notebook-tabs a{font:inherit;padding:10px 18px;border:1px solid #b9d0cf;border-radius:12px;background:#fff;color:#174d4a;cursor:pointer;text-decoration:none}
+.notebook-tabs a[aria-current=page]{background:#1b746d;color:#fff;border-color:#1b746d}
+.notebook-tabs a:focus-visible{outline:3px solid #e5b359;outline-offset:2px}
+.lesson-status{font-size:.85rem;color:#4c6968;margin-right:auto}
+.lesson-host{flex:1;min-height:0;overflow:auto;background:#f1f5f6;scroll-behavior:smooth;scroll-padding-top:16px}
+.lesson-host .notebook-fallback{max-width:720px;margin:48px auto;padding:24px;background:#fff;border:1px solid #d7e2e4;border-radius:16px;line-height:1.7}
+@media(max-width:650px){
+ .notebook-top{padding:10px 12px;gap:6px}
+ .notebook-tabs{flex-wrap:nowrap;overflow-x:auto;width:100%;padding:3px}
+ .notebook-tabs a{flex:none;padding:9px 12px}
+ .lesson-status{display:none}
 }
-document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>showLesson(b.dataset.lesson));
-window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===frame.contentWindow&&e.data?.type==='notebook-open-section'&&lessons.some(x=>x.id===e.data.lesson))showLesson(e.data.lesson,e.data.section)});
-function openRoute(){const [id,encodedSection]=location.hash.slice(1).split('/');let section;try{section=encodedSection?decodeURIComponent(encodedSection):undefined;}catch{}showLesson(id||'terminology',section);}
-window.addEventListener('hashchange',openRoute);
-openRoute();
-</script></body></html>
+@media print{
+ .notebook-top{display:none}
+ body{height:auto;overflow:visible;display:block}
+ .lesson-host{overflow:visible;height:auto}
+}
+</style>
+</head>
+<body>
+<header class="notebook-top">
+ <div class="brand">המחברת של אור · אנטומיה</div>
+ <nav class="notebook-tabs" aria-label="בחירת שיעור">
+  <a href="#/terminology" data-lesson="terminology">1 · מינוח ומפרקים</a>
+  <a href="#/connective" data-lesson="connective">2 · רקמות חיבור</a>
+  <a href="#/epithelium" data-lesson="epithelium">אפיתל · Epithelium</a>
+  <a href="#/muscle" data-lesson="muscle">3 · רקמת שריר</a>
+  <a href="#/spine" data-lesson="spine">4 · עמוד השדרה</a>
+  <a href="#/upper-limb" data-lesson="upper-limb">7-12 · גף עליון</a>
+  <a href="#/flashcards" data-lesson="flashcards">כרטיסיות חזרה</a>
+  <a href="#/question-bank" data-lesson="question-bank">בוחן · מאגר השאלות</a>
+ </nav>
+ <span class="lesson-status">הערות והתקדמות נשמרות בדפדפן הזה</span>
+</header>
+<main id="lesson-host" class="lesson-host" aria-live="polite"></main>
+<script type="application/json" id="notebook-lessons">[{"id":"terminology","title":"מינוח ומפרקים"},{"id":"connective","title":"רקמות חיבור"},{"id":"epithelium","title":"אפיתל — Epithelium"},{"id":"muscle","title":"רקמת שריר"},{"id":"spine","title":"4 · עמוד השדרה"},{"id":"upper-limb","title":"7-12 · גף עליון"},{"id":"flashcards","title":"כרטיסיות חזרה"},{"id":"question-bank","title":"בוחן · מאגר השאלות"}]</script>
+<script>
+const lessons=JSON.parse(document.getElementById('notebook-lessons').textContent);
+const host=document.getElementById('lesson-host');
+let activeId=null, loadSeq=0;
+
+function parseRoute(){
+ let raw=(location.hash||'').replace(/^#/, '');
+ if(raw.startsWith('/')) raw=raw.slice(1);
+ const [id,...rest]=raw.split('/');
+ let section;
+ if(rest.length){
+  try{section=decodeURIComponent(rest.join('/'))||undefined;}catch{section=rest.join('/')||undefined;}
+ }
+ return {id, section};
+}
+function routeHash(id,section){
+ return '#/'+id+(section?'/'+encodeURIComponent(section):'');
+}
+function lessonById(id){
+ return lessons.find(x=>x.id===id)||lessons[0];
+}
+function markTab(id){
+ document.querySelectorAll('[data-lesson]').forEach(a=>{
+  if(a.dataset.lesson===id) a.setAttribute('aria-current','page');
+  else a.removeAttribute('aria-current');
+ });
+}
+function resolveUrl(value, base){
+ if(!value) return value;
+ const trimmed=value.trim();
+ if(!trimmed || trimmed.startsWith('#') || /^(data:|blob:|mailto:|javascript:|https?:)/i.test(trimmed)) return value;
+ try{return new URL(trimmed, base).href;}catch{return value;}
+}
+function resolveSrcset(value, base){
+ return value.split(',').map(part=>{
+  const bits=part.trim().split(/\s+/);
+  if(bits[0]) bits[0]=resolveUrl(bits[0], base);
+  return bits.join(' ');
+ }).join(', ');
+}
+function rewriteTree(root, base){
+ root.querySelectorAll('[src],[href],[poster],[srcset]').forEach(el=>{
+  for(const attr of ['src','href','poster']){
+   if(el.hasAttribute(attr)) el.setAttribute(attr, resolveUrl(el.getAttribute(attr), base));
+  }
+  if(el.hasAttribute('srcset')) el.setAttribute('srcset', resolveSrcset(el.getAttribute('srcset'), base));
+ });
+}
+function adaptCss(css){
+ const scope='#lesson-host';
+ const skip=[];
+ css=css.replace(/@(?:keyframes|font-face|page)[^{]*\{(?:[^{}]*\{[^{}]*\}|[^{}])*\}/gi, m=>{
+  skip.push(m);
+  return '/*NOTEBOOK_SKIP_'+(skip.length-1)+'*/';
+ });
+ css=css.replace(/([^{}@]+)\{([^{}]*)\}/g,(full, selector, body)=>{
+  if(/NOTEBOOK_SKIP_/.test(selector)) return full;
+  const prefixed=selector.split(',').map(sel=>{
+   sel=sel.trim();
+   if(!sel) return sel;
+   const replaced=sel.replace(/^(:root|html|body)\b/, scope);
+   if(replaced.startsWith(scope)) return replaced;
+   return scope+' '+sel;
+  }).join(', ');
+  return prefixed+'{'+body+'}';
+ });
+ return css.replace(/\/\*NOTEBOOK_SKIP_(\d+)\*\//g,(_,n)=>skip[n]);
+}
+function clearLessonAssets(){
+ document.querySelectorAll('[data-notebook-lesson-style]').forEach(n=>n.remove());
+ host.querySelectorAll('canvas').forEach(c=>{
+  try{(c.getContext('webgl')||c.getContext('webgl2'))?.getExtension('WEBGL_lose_context')?.loseContext();}catch{}
+ });
+}
+function showFallback(title, text){
+ host.innerHTML='';
+ const box=document.createElement('div');
+ box.className='notebook-fallback';
+ const h=document.createElement('h1');
+ h.textContent=title;
+ const p=document.createElement('p');
+ p.textContent=text;
+ box.append(h,p);
+ host.append(box);
+}
+function isRunnableScript(script){
+ const type=(script.getAttribute('type')||'text/javascript').toLowerCase();
+ if(script.dataset.notebookBridge!==undefined) return false;
+ return type==='' || type==='text/javascript' || type==='module' || type==='application/javascript' || type==='text/js';
+}
+function runScripts(scripts){
+ return scripts.reduce((p, original)=>p.then(()=>new Promise(resolve=>{
+  const script=document.createElement('script');
+  const type=original.getAttribute('type');
+  if(type) script.type=type;
+  if(original.hasAttribute('nomodule')) script.nomodule=true;
+  for(const key of Object.keys(original.dataset)) script.dataset[key]=original.dataset[key];
+  if(original.src){
+   script.src=original.src;
+   script.onload=()=>resolve();
+   script.onerror=()=>resolve();
+   host.appendChild(script);
+  }else{
+   script.textContent=original.textContent;
+   host.appendChild(script);
+   resolve();
+  }
+ })), Promise.resolve());
+}
+function scrollToSection(section){
+ if(!section){host.scrollTo({top:0});return;}
+ const el=document.getElementById(section);
+ if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+ else host.scrollTo({top:0});
+}
+function bindHostFontSize(){
+ const plus=document.getElementById('fontPlus');
+ const minus=document.getElementById('fontMinus');
+ if(!plus||!minus) return;
+ let fontSize=parseFloat(getComputedStyle(host).fontSize)||16;
+ plus.onclick=()=>{fontSize=Math.min(22,fontSize+1);host.style.fontSize=fontSize+'px'};
+ minus.onclick=()=>{fontSize=Math.max(14,fontSize-1);host.style.fontSize=fontSize+'px'};
+}
+async function loadLesson(lesson, section){
+ const seq=++loadSeq;
+ markTab(lesson.id);
+ document.title=lesson.title+' | המחברת של אור';
+ clearLessonAssets();
+ showFallback('טוען…', 'טוען את שיעור «'+lesson.title+'».');
+ try{
+  const url=new URL('lessons/'+lesson.id+'.html', location.href);
+  const res=await fetch(url);
+  if(!res.ok) throw new Error(res.status);
+  const html=await res.text();
+  if(seq!==loadSeq) return;
+  const doc=new DOMParser().parseFromString(html, 'text/html');
+  const base=url;
+  rewriteTree(doc, base);
+  const runnable=[...doc.querySelectorAll('script')].filter(isRunnableScript);
+  runnable.forEach(s=>s.remove());
+  for(const node of doc.head.querySelectorAll('style,link[rel="stylesheet"]')){
+   const style=document.createElement('style');
+   style.dataset.notebookLessonStyle='1';
+   if(node.tagName==='STYLE'){
+    style.textContent=adaptCss(node.textContent);
+    document.head.appendChild(style);
+   }else{
+    const href=node.getAttribute('href');
+    const cssRes=await fetch(href);
+    if(seq!==loadSeq) return;
+    style.textContent=adaptCss(cssRes.ok?await cssRes.text():'');
+    document.head.appendChild(style);
+   }
+  }
+  if(seq!==loadSeq) return;
+  host.replaceChildren();
+  host.append(...doc.body.childNodes);
+  await runScripts(runnable);
+  if(seq!==loadSeq) return;
+  bindHostFontSize();
+  activeId=lesson.id;
+  scrollToSection(section);
+ }catch(err){
+  console.error(err);
+  if(seq!==loadSeq) return;
+  activeId=null;
+  showFallback('לא ניתן לטעון את השיעור', 'פתחו את המחברת דרך שרת מקומי (למשל python3 -m http.server) ולא כקובץ ישיר, ואז רעננו.');
+ }
+}
+function applyRoute(){
+ const parsed=parseRoute();
+ const lesson=lessonById(parsed.id);
+ const wanted=routeHash(lesson.id, parsed.section);
+ if(location.hash!==wanted){
+  history.replaceState(null,'',wanted);
+ }
+ if(activeId===lesson.id){
+  markTab(lesson.id);
+  scrollToSection(parsed.section);
+  return;
+ }
+ loadLesson(lesson, parsed.section);
+}
+function go(id, section){
+ const lesson=lessonById(id);
+ const hash=routeHash(lesson.id, section);
+ if(location.hash===hash) applyRoute();
+ else location.hash=hash;
+}
+
+host.addEventListener('click', e=>{
+ const jump=e.target.closest('[data-open-lesson]');
+ if(jump && lessons.some(x=>x.id===jump.dataset.openLesson)){
+  e.preventDefault();
+  go(jump.dataset.openLesson, jump.dataset.openSection);
+  return;
+ }
+ const a=e.target.closest('a[href]');
+ if(!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+ if(a.target && a.target!=='_self') return;
+ let url;
+ try{url=new URL(a.href, location.href);}catch{return;}
+ if(url.origin!==location.origin) return;
+ const samePage=url.pathname===location.pathname || /(?:^|\/)index\.html$/.test(url.pathname);
+ const hrefAttr=a.getAttribute('href')||'';
+ if(hrefAttr.startsWith('#') && activeId){
+  const name=hrefAttr.slice(1);
+  if(!name.startsWith('/')){
+   e.preventDefault();
+   go(activeId, decodeURIComponent(name));
+  }
+  return;
+ }
+ if(samePage && url.hash){
+  e.preventDefault();
+  location.hash=url.hash.startsWith('#/')?url.hash:'#/'+url.hash.slice(1);
+ }
+});
+
+window.addEventListener('message', e=>{
+ if(e.origin!==location.origin) return;
+ if(e.data?.type==='notebook-open-section' && lessons.some(x=>x.id===e.data.lesson)){
+  go(e.data.lesson, e.data.section);
+ }
+});
+window.addEventListener('hashchange', applyRoute);
+if(!location.hash) history.replaceState(null,'','#/'+lessons[0].id);
+applyRoute();
+</script>
+</body>
+</html>

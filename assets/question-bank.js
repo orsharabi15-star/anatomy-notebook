@@ -2,7 +2,14 @@
 (async function(){
  const $=id=>document.getElementById(id), KEY='anatomy-question-bank-v1', letters=['א','ב','ג','ד'];
  let questions, answers={}, current=1, topic='all', retryIds=null;
- try {const res=await fetch('../assets/question-bank.json');if(!res.ok)throw new Error();questions=await res.json();}
+ try {
+  let questionsData;
+  for (const url of ['assets/question-bank.json','../assets/question-bank.json']){
+   try{const res=await fetch(url);if(res.ok){questionsData=await res.json();break;}}catch{}
+  }
+  if(!questionsData)throw new Error();
+  questions=questionsData;
+ }
  catch { $('load-status').textContent='לא הצלחנו לטעון את השאלות. נסו לרענן את העמוד.';return; }
  try {const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved?.version===1){for(const q of questions){const a=saved.answers?.[q.id];if(Number.isInteger(a)&&a>=0&&a<4)answers[q.id]=a;}if(questions.some(q=>q.id===saved.current))current=saved.current;if([...$('topic').options].some(o=>o.value===saved.topic))topic=saved.topic;}}
  catch { $('storage-warning').hidden=false; }
@@ -28,7 +35,11 @@
    });
    const feedback=$('feedback');feedback.hidden=!answered(q);feedback.replaceChildren();feedback.dataset.kind=state(q);
    if(answered(q)){const title=document.createElement('strong');title.textContent=q.excluded?'סתירה במפתח — ללא שינוי בציון':state(q)==='correct'?'נכון!':'התשובה הנכונה היא '+letters[q.answer]+'׳';const p=document.createElement('p');p.textContent=q.explanation;feedback.append(title,p);if(q.reference){const a=document.createElement('a');a.href=q.reference;a.target='_blank';a.rel='noopener';a.textContent='הסבר מנגנון הכיווץ ב־OpenStax ↗';feedback.append(a);}}
-   $('summary-link').href='../index.html#'+q.lesson+'/'+q.section;$('summary-link').textContent='לסיכום: '+q.sectionTitle+' ↗';
+   const inNotebook=!!document.getElementById('lesson-host');
+   $('summary-link').href=inNotebook?'#/'+q.lesson+'/'+encodeURIComponent(q.section):'../index.html#'+q.lesson+'/'+q.section;
+   if(inNotebook) $('summary-link').removeAttribute('target');
+   $('summary-link').textContent='לסיכום: '+q.sectionTitle+' ↗';
+   const hint=document.querySelector('.link-hint');if(hint) hint.hidden=inNotebook;
    const i=list.indexOf(q);$('position').textContent=`${i+1} מתוך ${list.length}`;$('prev').disabled=i===0;$('next').disabled=i===list.length-1;
    if(focus){$('question-title').focus({preventScroll:true});$('question').scrollIntoView({behavior:'smooth',block:'start'});}
   }
