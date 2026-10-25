@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>סופראספינאטוס | מושג בגף העליון</title>
+<meta name="description" content="עמוד מושג לדוגמה: שריר על-קוצי, סופראספינאטוס. מוצא, אחז, עצבוב, פעולה ואספקת דם.">
+<style>
+  :root {
+    --ink: #1a2332;
+    --muted: #3d5166;
+    --teal: #1b746d;
+    --bg: #f3f6f7;
+    --card: #ffffff;
+    --line: #d3e0e3;
+    --check: #fff6df;
+    --check-line: #e0b85a;
+    --soon: #6b4e16;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 19px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", "Arial Hebrew", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    overflow-x: clip;
+  }
+  a { color: var(--teal); }
+  a:hover { color: #0f4f4a; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid #e5b359;
+    outline-offset: 3px;
+  }
+  .back {
+    display: inline-block;
+    margin: 18px 22px 0;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 18px 22px 88px;
+  }
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.55rem;
+    align-items: baseline;
+    margin: 0 0 8px;
+    color: var(--muted);
+  }
+  .crumbs [aria-current="page"] {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .crumbs-note {
+    margin: 0 0 28px;
+    color: var(--muted);
+    max-width: 40rem;
+  }
+  .kicker {
+    margin: 0 0 8px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  h1 {
+    margin: 0;
+    font-size: 2.35rem;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+  .latin {
+    margin: 4px 0 0;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .alias, .lead, .solo, .text, .check, .cards { max-width: 40rem; }
+  .alias { margin: 12px 0 0; }
+  .lead { margin: 14px 0 0; font-size: 1.12rem; }
+  h2 {
+    margin: 0 0 16px;
+    font-size: 1.65rem;
+    line-height: 1.35;
+  }
+  section { margin-top: 64px; }
+  .cards {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px 20px 16px;
+  }
+  .card h3 {
+    margin: 0 0 4px;
+    color: var(--teal);
+    font-size: 1.15rem;
+    line-height: 1.4;
+  }
+  .card p { margin: 0; }
+  .check {
+    margin-top: 22px;
+    background: var(--check);
+    border: 1px solid var(--check-line);
+    border-radius: 18px;
+    padding: 18px 20px 8px;
+  }
+  .check h2 { font-size: 1.35rem; }
+  .check ul, .text ul, .solo ul, .link-list {
+    margin: 0 0 16px;
+    padding: 0 1.25rem 0 0;
+  }
+  .check li, .text li, .solo li, .link-list li { margin: 0.45rem 0; }
+  .pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
+    gap: 28px 32px;
+    align-items: start;
+    margin-top: 28px;
+  }
+  .pair > * { min-width: 0; }
+  .text p { margin: 0 0 0.85rem; }
+  figure {
+    margin: 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  figure img, figure video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background: #fff;
+  }
+  figcaption {
+    padding: 14px 16px 16px;
+    line-height: 1.9;
+  }
+  figcaption p { margin: 0 0 8px; }
+  .credit {
+    margin: 0;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  .viewer {
+    background: #0e1a2e;
+    border-color: #213e62;
+    color: #e7eef8;
+  }
+  .viewer model-viewer {
+    display: block;
+    width: 100%;
+    height: 380px;
+    background-color: #0e1a2e;
+    --poster-color: #0e1a2e;
+  }
+  .viewer figcaption { color: #d5e2f2; }
+  .viewer .credit { color: #b7c7dc; }
+  .viewer a { color: #9ad7d1; }
+  .link-list a { font-weight: 700; }
+  .soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--soon);
+    color: var(--soon);
+  }
+  .badge {
+    display: inline-block;
+    background: #fff1cc;
+    color: var(--soon);
+    border: 1px solid #e6c56d;
+    border-radius: 999px;
+    padding: 0 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.7;
+  }
+  .note {
+    max-width: 40rem;
+    color: var(--muted);
+  }
+  @media (max-width: 800px) {
+    .page { padding: 12px 16px 64px; }
+    .back { margin: 14px 16px 0; }
+    h1 { font-size: 2rem; }
+    .pair { grid-template-columns: 1fr; gap: 16px; }
+    .viewer model-viewer { height: 300px; }
+    section { margin-top: 48px; }
+  }
+</style>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<a class="back" href="../../../index.html">חזרה למחברת</a>
+<main class="page">
+  <nav class="crumbs" aria-label="מיקום בעמוד">
+    <span>מערכות הגוף</span>
+    <span aria-hidden="true">-</span>
+    <span>שרירים</span>
+    <span aria-hidden="true">-</span>
+    <span>גף עליון</span>
+    <span aria-hidden="true">-</span>
+    <span aria-current="page">סופראספינאטוס</span>
+  </nav>
+  <p class="crumbs-note">עמודי מערכות הגוף, השרירים והגף העליון עדיין לא נבנו, ולכן הם מוצגים כטקסט ולא כקישור.</p>
+
+  <header>
+    <p class="kicker">עמוד מושג לדוגמה</p>
+    <h1>סופראספינאטוס</h1>
+    <p class="latin" lang="en" dir="ltr">Supraspinatus</p>
+    <p class="alias">בסיכום הקורס השם הוא שריר על-קוצי.</p>
+    <p class="lead">השריר מתחיל את הרחקת הזרוע ב-15 המעלות הראשונות, בטווח שבו הדלתא עדיין לא עובדת.</p>
+  </header>
+
+  <section aria-labelledby="cards-title">
+    <h2 id="cards-title">חמישה כרטיסים</h2>
+    <ul class="cards">
+      <li class="card">
+        <h3>מוצא</h3>
+        <p>הגומץ העל-קוצי של השכמה (<span lang="en" dir="ltr">supraspinous fossa</span>).</p>
+      </li>
+      <li class="card">
+        <h3>אחז</h3>
+        <p>הגבשושית הגדולה של עצם הזרוע, הפן העליון (<span lang="en" dir="ltr">greater tubercle, superior facet</span>).</p>
+      </li>
+      <li class="card">
+        <h3>עצבוב</h3>
+        <p>עצב על-שכמי <span lang="en" dir="ltr">C5-C6</span> (<span lang="en" dir="ltr">suprascapular nerve</span>).</p>
+      </li>
+      <li class="card">
+        <h3>פעולה</h3>
+        <p>התחלת הרחקה של הזרוע (15 המעלות הראשונות) וייצוב ראש ההומרוס.</p>
+      </li>
+      <li class="card">
+        <h3>אספקת דם</h3>
+        <p>עורק על-שכמי (<span lang="en" dir="ltr">suprascapular artery</span>).</p>
+      </li>
+    </ul>
+
+    <aside class="check" aria-labelledby="check-title">
+      <h3 id="check-title">נקודה לבדיקה מול הסיכום</h3>
+      <p>הכרטיסים כתובים לפי הניסוח של עמוד המושג. כל הבדל מול הסיכום שבאתר רשום כאן.</p>
+      <ul>
+        <li>מוצא: בכרטיס כתוב "הגומץ העל-קוצי". בשיעור 7 ובשיעור 8 כתוב "גומה על-קוצית" ו"מהגומה העל-קוצית". אותו מבנה, מילה אחרת.</li>
+        <li>אחז: בכרטיס נוסף "הפן העליון". בשיעור 8 נכתב שהשריר מתחבר לגבשושית הגדולה, בלי שם של פן.</li>
+        <li>פעולה: בשיעור 8 כתוב שהשריר מתחיל הרחקה בטווח 0-15 מעלות, כשהדלתא לא עובדת. "ייצוב ראש ההומרוס" לא כתוב בשורה של השריר.</li>
+        <li>עצבוב: שיעור 8 כותב "עצב על-שכמי" בלי שורש. שיעור 9 קושר את העצב לגזע העליון, והגזע העליון הוא <span lang="en" dir="ltr">C5</span> ו-<span lang="en" dir="ltr">C6</span>. זה פירוט, לא סתירה.</li>
+        <li>אספקת דם: בשיעור 8 העורק העל-שכמי רשום כדם למפרק החזה והבריח, לא כדם של השריר. אספקת הדם של השריר לא רשומה בסיכום.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="structure" aria-labelledby="structure-title">
+    <h2 id="structure-title">מבנה</h2>
+    <div class="pair">
+      <div class="text">
+        <ul>
+          <li>השריר יושב בחלק האחורי העליון של השכמה, בגומה העל-קוצית.</li>
+          <li>הגיד שלו עובר מתחת לאקרומיון, אל הגבשושית הגדולה של עצם הזרוע.</li>
+          <li>בשיעור, הסדר מבחוץ פנימה הוא קשת האקרומיון, אחר כך בורסה, ואז השריר.</li>
+        </ul>
+      </div>
+      <figure>
+        <img src="../../../assets/concepts/supraspinatus/location-posterior.png" width="900" height="900" alt="מבט אחורי: שריר הסופראספינאטוס מודגש על השכמה, מעל קוץ השכם.">
+        <figcaption>
+          <p>מיקום השריר על השכמה, מבט אחורי. הוא יושב מעל קוץ השכם, בגומה העל-קוצית.</p>
+          <p class="credit">קרדיט: Anatomography, על בסיס BodyParts3D. רישיון <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en">CC BY-SA 2.1 Japan</a>. <a href="https://commons.wikimedia.org/wiki/File:Supraspinatus_muscle_back.png">הקובץ ב-Wikimedia Commons</a>.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="pair">
+      <div class="text">
+        <p>הסופראספינאטוס הוא אחד מארבעת שרירי השרוול המסובב (<span lang="en" dir="ltr">SITS</span>).</p>
+        <ul>
+          <li>על-קוצי, תת-קוצי ועגול קטן נאחזים בגבשושית הגדולה.</li>
+          <li>תת-שכמי הוא היחיד שנאחז בגבשושית הקטנה, בצד הקדמי של השכמה.</li>
+          <li>בשיעור הם מתוארים כארבעה שרירים פנימיים שעובדים יחד ומביאים את הכתף למקומות שונים.</li>
+        </ul>
+      </div>
+      <figure>
+        <img src="../../../assets/concepts/supraspinatus/rotator-cuff.svg" width="621" height="374" alt="מפרק הכתף במבט אחורי ובמבט קדמי, עם מספרי השרוול המסובב.">
+        <figcaption>
+          <p>השריר בתוך השרוול המסובב. באיור, המבט האחורי בצד שמאל והמבט הקדמי בצד ימין.</p>
+          <p>11 על-קוצי, 12 תת-שכמי, 13 תת-קוצי, 14 עגול קטן.</p>
+          <p class="credit">קרדיט: Jmarchn, Wikimedia Commons. רישיון <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Shoulder_joint_bf.svg">הקובץ ב-Wikimedia Commons</a>.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="pair">
+      <div class="text">
+        <p>אפשר לסובב את המודל ולראות את השריר לבדו.</p>
+        <ul>
+          <li>זה השריר הימני בלבד, בלי השכמה ובלי שאר השרוול.</li>
+          <li>המודל כבר הוקטן במאגר המקור, כדי להישאר קובץ קל.</li>
+        </ul>
+      </div>
+      <figure class="viewer">
+        <model-viewer alt="מודל תלת-ממד של הסופראספינאטוס הימני" camera-controls interaction-prompt="none" shadow-intensity="0.35" exposure="1.15" src="../../../assets/concepts/supraspinatus/supraspinatus.glb"></model-viewer>
+        <figcaption>
+          <p>סופראספינאטוס ימני. גרירה מסובבת את המודל.</p>
+          <p class="credit">קרדיט: BodyParts3D, © The Database Center for Life Science. אלמנט <span lang="en" dir="ltr">FJ1506</span>, גרסה 4.0, הקטנה של 99% מהמצולעים, הומר כאן ל-<span lang="en" dir="ltr">GLB</span>. רישיון לפי עמוד המאגר העדכני: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. כותרת הקובץ המקורי מציינת גם <span lang="en" dir="ltr">CC BY-SA 2.1 Japan</span>. <a href="https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/README_e.html">עמוד הנתונים</a>.</p>
+          <p class="credit">מודל Anatomary ב-Sketchfab, שהכין Alexander Safir, הוא <span lang="en" dir="ltr">CC BY 4.0</span> ומתבסס על אותו מאגר. קובץ ההורדה שם הוא <span lang="en" dir="ltr">OBJ</span> של כ-78MB ודורש חשבון, ולכן לא הועלה. כאן מוצג הקובץ הרשמי שכבר הוקטן.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="action" aria-labelledby="action-title">
+    <h2 id="action-title">פעולה</h2>
+    <div class="pair">
+      <div class="text">
+        <ul>
+          <li>השריר מתחיל את הרחקת הזרוע, מ-0 עד 15 מעלות.</li>
+          <li>בטווח הזה שריר הדלתא עדיין לא עושה את ההרחקה.</li>
+          <li>אחרי 15 מעלות הדלתא ממשיכה את התנועה.</li>
+          <li>ייצוב ראש ההומרוס מופיע בכרטיס, ולא בשורת השריר בשיעור 8.</li>
+        </ul>
+      </div>
+      <figure>
+        <video controls playsinline preload="metadata" poster="../../../assets/concepts/supraspinatus/abduction-poster.png">
+          <source src="../../../assets/concepts/supraspinatus/abduction.webm" type="video/webm">
+        </video>
+        <figcaption>
+          <p>פעולת השריר: הרחקת הזרוע. החץ באיור מראה את כיוון התנועה. אפשר להפעיל את הסרטון.</p>
+          <p class="credit">קרדיט: Young Lae Moon. רישיון <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Shoulder_motion_with_rotator_cuff_(supraspinatus).webm">הקובץ ב-Wikimedia Commons</a>. מקור: <a href="https://www.youtube.com/watch?v=uskZIqThlb0">הסרטון ב-YouTube</a>.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="supply" aria-labelledby="supply-title">
+    <h2 id="supply-title">עצבוב ואספקת דם</h2>
+    <div class="solo">
+      <ul>
+        <li>העצב הוא עצב על-שכמי.</li>
+        <li>הוא עובר בחריץ העל-שכמי, ומעצבב גם את השריר התת-קוצי.</li>
+        <li>בשיעור 9 העצב יוצא מהגזע העליון. הגזע העליון הוא <span lang="en" dir="ltr">C5</span> ו-<span lang="en" dir="ltr">C6</span>.</li>
+        <li>אספקת הדם בכרטיס היא עורק על-שכמי. בסיכום שיעור 8 העורק הזה רשום למפרק החזה והבריח, לא לשריר עצמו.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="clinical" aria-labelledby="clinical-title">
+    <h2 id="clinical-title">נקודה קלינית</h2>
+    <div class="solo">
+      <ul>
+        <li>השריר עובר מתחת לאקרומיון.</li>
+        <li>בגלל המיקום הזה הוא חשוף לצביטה (<span lang="en" dir="ltr">impingement</span>) ולקרעים.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="links" aria-labelledby="links-title">
+    <h2 id="links-title">קישורים</h2>
+    <div class="solo">
+      <h3>כרטיסיות</h3>
+      <ul class="link-list">
+        <li><a href="https://flashcards-bd849.web.app/#/decks" target="_blank" rel="noopener noreferrer">חפיסת OIAI של שרירי הגף העליון</a></li>
+        <li><a href="https://flashcards-bd849.web.app/#/decks" target="_blank" rel="noopener noreferrer">כרטיס SITS באטלס השרירים</a></li>
+        <li><a href="https://flashcards-bd849.web.app/#/decks" target="_blank" rel="noopener noreferrer">חפיסת זיהוי שרירים</a></li>
+      </ul>
+      <p class="note">כתובת מדויקת של כל חפיסה לא נמצאה במאגר הזה. שלושת הקישורים נפתחים ברשימת החפיסות באתר הכרטיסיות.</p>
+
+      <h3>השיעור</h3>
+      <ul class="link-list">
+        <li><a href="../../../index.html#ul-shoulder">שיעור 8 - מפרק הכתף, עמ' 53-60</a></li>
+      </ul>
+
+      <h3>מושגים קרובים</h3>
+      <ul class="link-list">
+        <li><a class="soon" href="#coming-soon">אינפראספינאטוס <span class="badge">בקרוב</span></a></li>
+        <li><a class="soon" href="#coming-soon">דלתואיד <span class="badge">בקרוב</span></a></li>
+        <li><a class="soon" href="#coming-soon">מקלעת הזרוע <span class="badge">בקרוב</span></a></li>
+        <li><a class="soon" href="#coming-soon">עצב על-שכמי <span class="badge">בקרוב</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="coming-soon" aria-labelledby="soon-title">
+    <h2 id="soon-title">עמודים שעדיין לא נכתבו</h2>
+    <p class="solo">לאינפראספינאטוס, לדלתואיד, למקלעת הזרוע ולעצב העל-שכמי אין עדיין עמוד. הקישורים למעלה נשארים בעמוד הזה, כדי שלא ייפתח דף חסר.</p>
+  </section>
+</main>
+</body>
+</html>
