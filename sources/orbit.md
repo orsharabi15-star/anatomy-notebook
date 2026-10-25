@@ -6,7 +6,7 @@
 - שם לטיני: Orbit (Bony Orbit)
 - מערכת: ראש וצוואר - גולגולת
 - צבע המבנה: כחול מלכותי #1E3A8A
-- סטטוס אימות: מאומת מול Kenhub, TeachMeAnatomy ו-StatPearls; ממתין לבדיקת מירי. שמות עבריים: מילון knowbody-glossary.md לא היה זמין מקומית, ולכן מונחים שלא נמצאו בו סומנו "מונח חסר"
+- סטטוס אימות: מאומת מול Kenhub, TeachMeAnatomy ו-StatPearls; ממתין לבדיקת מירי. שמות עבריים לפי רשימה מאושרת
 - היקף לפי חומרי הקורס: ארובת עין גרמית בלבד - 7 עצמות, 4 דפנות, פתחים. שרירי עין ועצבים קרניאליים בפירוט הם נושא 14 ומחוץ להיקף
 
 ## 2. תקציר - 2 משפטים
@@ -19,32 +19,32 @@
 
 | עצם | שם עברי | תרומה לארובה |
 |-----|---------|--------------|
-| Frontal | מונח חסר | הגג (orbital plate) |
-| Maxilla | מונח חסר | רוב הרצפה; חלק מהדופן המדיאלית (frontal process) |
-| Zygomatic | מונח חסר | חלק מהרצפה; החלק הקדמי של הדופן הלטרלית |
-| Sphenoid | מונח חסר | Lesser wing: חלק מהגג והדופן המדיאלית. Greater wing: החלק האחורי של הדופן הלטרלית |
-| Ethmoid | מונח חסר | רוב הדופן המדיאלית (lamina papyracea) |
-| Lacrimal | מונח חסר | חלק מהדופן המדיאלית |
-| Palatine | מונח חסר | חלק קטן מהרצפה (orbital process) |
+| Frontal | עצם המצח | הגג (orbital plate) |
+| Maxilla | לסת עליונה | רוב הרצפה; חלק מהדופן המדיאלית (frontal process) |
+| Zygomatic | עצם הלחי | חלק מהרצפה; החלק הקדמי של הדופן הלטרלית |
+| Sphenoid | עצם היתד | Lesser wing: חלק מהגג והדופן המדיאלית. Greater wing: החלק האחורי של הדופן הלטרלית |
+| Ethmoid | עצם הכברה | רוב הדופן המדיאלית (lamina papyracea) |
+| Lacrimal | עצם הדמע | חלק מהדופן המדיאלית |
+| Palatine | עצם החך | חלק קטן מהרצפה (orbital process) |
 
 ### ארבע הדפנות
 
 | דופן | עצמות | הערה |
 |------|-------|------|
-| גג (Roof) - מונח חסר | Frontal (orbital plate), Sphenoid (lesser wing) | בקדמי-לטרלי: lacrimal fossa |
-| רצפה (Floor) - מונח חסר | Maxilla, Zygomatic, Palatine | משמשת גם גג של הסינוס המקסילרי; מכילה infraorbital groove |
-| דופן מדיאלית (Medial wall) - מונח חסר | Ethmoid (lamina papyracea), Lacrimal, Maxilla (frontal process), Sphenoid | דקה מאוד; גובלת בסינוס האתמואידי |
-| דופן לטרלית (Lateral wall) - מונח חסר | Zygomatic, Sphenoid (greater wing) | החזקה בדפנות |
+| גג (Roof) | Frontal (orbital plate), Sphenoid (lesser wing) | בקדמי-לטרלי: lacrimal fossa |
+| רצפה (Floor) | Maxilla, Zygomatic, Palatine | משמשת גם גג של הסינוס המקסילרי; מכילה infraorbital groove |
+| דופן מדיאלית (Medial wall) | Ethmoid (lamina papyracea), Lacrimal, Maxilla (frontal process), Sphenoid | דקה מאוד; גובלת בסינוס האתמואידי |
+| דופן לטרלית (Lateral wall) | Zygomatic, Sphenoid (greater wing) | החזקה בדפנות |
 
 ### פתחי הארובה
 
 | פתח | גבולות / מיקום | מבנים עוברים |
 |-----|----------------|--------------|
 | תעלת הראייה (Optic canal) | Lesser wing of sphenoid, בקודקוד הארובה | Optic nerve (CN II), Ophthalmic artery |
-| Superior orbital fissure - מונח חסר | בין ה-lesser wing וה-greater wing של ה-sphenoid | CN III, IV, VI; Lacrimal, Frontal, Nasociliary (ענפי V1); Superior ophthalmic vein |
-| Inferior orbital fissure - מונח חסר | בין ה-greater wing של ה-sphenoid לבין ה-maxilla וה-palatine; מצד לטרלי zygomatic | Zygomatic nerve, Infraorbital nerve (V2), Infraorbital vessels, Inferior ophthalmic vein |
-| Anterior ethmoidal foramen - מונח חסר | בצומת הגג והדופן המדיאלית | Anterior ethmoidal vessels and nerve |
-| Posterior ethmoidal foramen - מונח חסר | בצומת הגג והדופן המדיאלית | Posterior ethmoidal vessels and nerve |
+| סדק ארובתי עליון (Superior orbital fissure) | בין ה-lesser wing וה-greater wing של ה-sphenoid | CN III, IV, VI; Lacrimal, Frontal, Nasociliary (ענפי V1); Superior ophthalmic vein |
+| סדק ארובתי תחתון (Inferior orbital fissure) | בין ה-greater wing של ה-sphenoid לבין ה-maxilla וה-palatine; מצד לטרלי zygomatic | Zygomatic nerve, Infraorbital nerve (V2), Infraorbital vessels, Inferior ophthalmic vein |
+| Anterior ethmoidal foramen | בצומת הגג והדופן המדיאלית | Anterior ethmoidal vessels and nerve |
+| Posterior ethmoidal foramen | בצומת הגג והדופן המדיאלית | Posterior ethmoidal vessels and nerve |
 
 ## 4. משמעות קלינית - תיבה נפרדת
 
@@ -86,4 +86,4 @@
 - TeachMeAnatomy: The Bony Orbit - דפנות, פתחים, שברים
 - StatPearls: Anatomy, Head and Neck, Orbit Bones - דפנות וגבולות הסדקים
 - חומרי הקורס: היקף בלבד
-- מילון knowbody-glossary.md: לא זמין מקומית - כל השמות העבריים שלא ידועים סומנו "מונח חסר"
+- שמות עבריים: לפי רשימה מאושרת; לנקבי ה-ethmoidal לא נמסר שם עברי ולכן מופיע השם הלטיני בלבד
