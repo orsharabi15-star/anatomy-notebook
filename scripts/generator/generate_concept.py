@@ -76,7 +76,7 @@ def parse_markdown(md_path: str) -> Dict:
 
     # Detect page type: muscle (OIAI) or foramina table
     oiai_match = re.search(r'## 3\. טבלת עובדות מפתח - OIAI', content)
-    foramina_match = re.search(r'## 3\. טבלת חרירים מפתח - לפי בורות גולגולת', content)
+    foramina_match = re.search(r'## 3\. (טבלת חרירים מפתח - לפי בורות גולגולת|טבלאות מפתח - [^\n]+)', content)
 
     if oiai_match:
         # Extract OIAI table (muscle format)
@@ -108,7 +108,9 @@ def parse_markdown(md_path: str) -> Dict:
     elif foramina_match:
         # Extract foramina tables (skull foramina format)
         data['page_type'] = 'foramina'
-        foramina_section_match = re.search(r'## 3\. טבלת חרירים מפתח - לפי בורות גולגולת\n(.*?)(?=\n## )', content, re.DOTALL)
+        foramina_section_match = re.search(r'## 3\. (?:טבלת חרירים מפתח - לפי בורות גולגולת|טבלאות מפתח - [^\n]+)\n(.*?)(?=\n## )', content, re.DOTALL)
+        heading_match = re.search(r'## 3\. (.+)', content)
+        data['tables_heading'] = heading_match.group(1).strip()
         if foramina_section_match:
             foramina_section = foramina_section_match.group(1)
             # Store the raw markdown tables - will be parsed for HTML generation
@@ -395,6 +397,7 @@ def generate_html(data: Dict, shared_dir: str) -> str:
       <a href="decks.html">חפיסות</a>
       <h3>נושאי גולגולת</h3>
       <a href="skull-foramina.html"><span class="dot" style="background:#1e3a8a"></span>חרירי גולגולת</a>
+      <a href="orbit.html"><span class="dot" style="background:#1e3a8a"></span>ארובת העין</a>
       <h3>החפיסות שלי</h3>
       <a href="decks.html#topic">עצבים קרניאליים</a>
       <a href="decks.html#topic">חרירי גולגולת</a>
@@ -514,8 +517,8 @@ def generate_html(data: Dict, shared_dir: str) -> str:
 
     elif page_type == 'foramina':
         # Foramina tables for skull
-        html += '''
-        <h2>טבלת חרירים מפתח - לפי בורות גולגולת</h2>'''
+        html += f'''
+        <h2>{data.get('tables_heading', 'טבלת חרירים מפתח - לפי בורות גולגולת')}</h2>'''
 
         # Split the raw markdown by subsections (anterior, middle, posterior fossa)
         foramina_raw = data.get('foramina_tables_raw', '')
