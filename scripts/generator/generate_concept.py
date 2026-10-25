@@ -347,7 +347,13 @@ def generate_html(data: Dict, shared_dir: str) -> str:
   </div>
 </header>
 
-<div class="wrap">
+<div class="wrap">'''
+
+    # Dynamic breadcrumb and sidebar based on page type
+    page_type = data.get('page_type', 'muscle')
+
+    if page_type == 'muscle':
+        html += f'''
   <div class="crumb"><span>מערכות הגוף</span> &gt; <span>שרירים</span> &gt; <span>גף עליון</span> &gt; {data['hebrew_name']}</div>
   <div class="layout">
     <aside class="side">
@@ -376,7 +382,61 @@ def generate_html(data: Dict, shared_dir: str) -> str:
 
       <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
         <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי, לפני שנכנסים לדף השריר - לא כאן. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>'''
+
+    elif page_type == 'foramina':
+        html += f'''
+  <div class="crumb"><span>מערכות הגוף</span> &gt; <span>ראש וצוואר</span> &gt; <span>גולגולת</span> &gt; {data['hebrew_name']}</div>
+  <div class="layout">
+    <aside class="side">
+      <h3>ניווט</h3>
+      <a href="../index.html">דף הבית</a>
+      <a href="skull-foramina.html">גולגולת וראש-צוואר</a>
+      <a href="decks.html">חפיסות</a>
+      <h3>נושאי גולגולת</h3>
+      <a href="skull-foramina.html"><span class="dot" style="background:#1e3a8a"></span>חרירי גולגולת</a>
+      <h3>החפיסות שלי</h3>
+      <a href="decks.html#topic">עצבים קרניאליים</a>
+      <a href="decks.html#topic">חרירי גולגולת</a>
+      <a href="decks.html#topic">עצמות הגולגולת</a>
+    </aside>
+
+    <main>
+      <div class="hero">
+        <span class="pilot">פיילוט - Knowbody דפי מושג</span>
+        <h1>{data['hebrew_name']}</h1>
+        <div class="latin">{data['latin_name']}</div>
+        <p>{data['summary']}</p>
       </div>
+
+      <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
+        <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי, לפני שנכנסים לדף המושג - לא כאן. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>'''
+
+    else:
+        # Generic fallback
+        html += f'''
+  <div class="crumb"><span>מערכות הגוף</span> &gt; {data['hebrew_name']}</div>
+  <div class="layout">
+    <aside class="side">
+      <h3>ניווט</h3>
+      <a href="../index.html">דף הבית</a>
+      <a href="decks.html">חפיסות</a>
+    </aside>
+
+    <main>
+      <div class="hero">
+        <span class="pilot">פיילוט - Knowbody דפי מושג</span>
+        <h1>{data['hebrew_name']}</h1>
+        <div class="latin">{data['latin_name']}</div>
+        <p>{data['summary']}</p>
+      </div>
+
+      <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
+        <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>'''
+
+    html += f'''
 
       <div class="glass sec" style="--ac:{data['color'].lower()}">'''
 
@@ -436,7 +496,7 @@ def generate_html(data: Dict, shared_dir: str) -> str:
 {parse_markdown_table_to_html(table_markdown, data['color'])}
         </div>'''
 
-    html += '''
+    html += f'''
       </div>
 
       <div class="glass sec" style="--ac:#65a30d">
@@ -446,14 +506,40 @@ def generate_html(data: Dict, shared_dir: str) -> str:
 
     # Add illustration if present
     if 'illustration_file' in data and data['illustration_file']:
-        illus_filename = data['illustration_file'].split('/')[-1]
-        illus_path = f"../assets/knowbody-atlas/{illus_filename}"
+        illus_file = data['illustration_file']
         illus_desc = data.get('illustration_desc', 'איור')
 
-        html += f'''
+        # Determine illustration section title based on page type
+        page_type = data.get('page_type', 'muscle')
+        if page_type == 'muscle':
+            illus_title = "איור - אטלס שרירי כתף"
+        elif page_type == 'foramina':
+            illus_title = "איור - אטלס גולגולת"
+        else:
+            illus_title = "איור"
+
+        # Check if this is a placeholder or actual illustration
+        if illus_file.startswith('מציין מקום'):
+            # Placeholder box (no image, no credit)
+            html += f'''
 
       <div class="glass sec" style="--ac:{data['color'].lower()}">
-        <h2>איור - אטלס שרירי כתף</h2>
+        <h2>{illus_title}</h2>
+        <p class="sub">{illus_desc}</p>
+        <div class="viewer"><div>
+          <p><b>מקום שמור לאיור</b></p>
+          <p class="small">בפיילוט הזה אין עדיין איור CC מאומת - האזור מסמן מקום בלבד</p>
+        </div></div>
+      </div>'''
+        else:
+            # Actual illustration with image and credit
+            illus_filename = illus_file.split('/')[-1]
+            illus_path = f"../assets/knowbody-atlas/{illus_filename}"
+
+            html += f'''
+
+      <div class="glass sec" style="--ac:{data['color'].lower()}">
+        <h2>{illus_title}</h2>
         <p class="sub">{illus_desc}</p>
         <img src="{illus_path}" alt="{illus_desc}" class="atlas-img">
         <p class="credit">UBC Clinical Anatomy via LibreTexts, CC BY-NC-SA 4.0</p>
