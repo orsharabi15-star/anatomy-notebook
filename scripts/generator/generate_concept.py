@@ -7,6 +7,7 @@ Generates HTML concept pages from markdown source files.
 import re
 import os
 import sys
+import argparse
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -116,12 +117,41 @@ def parse_markdown(md_path: str) -> Dict:
         if desc_match:
             data['illustration_desc'] = desc_match.group(1).strip()
 
-    # Extract quiz questions
+    # Extract quiz question-answer pairs
     quiz_match = re.search(r'## 6\. למידה אקטיבית - בוחן / תוויות נסתרות\n(.*?)(?=\n##)', content, re.DOTALL)
     if quiz_match:
-        quiz_section = quiz_match.group(1)
-        questions = re.findall(r'\d+\. (.+)', quiz_section)
-        data['quiz_questions'] = questions
+        quiz_section = quiz_match.group(1).strip()
+        quiz_items = []
+
+        # Split by numbered questions
+        parts = re.split(r'\n(\d+)\. ', quiz_section)
+
+        # parts[0] is empty or whitespace before first question
+        # parts[1] = "1", parts[2] = question + answer text
+        # parts[3] = "2", parts[4] = question + answer text, etc.
+
+        for i in range(1, len(parts), 2):
+            if i+1 < len(parts):
+                question_and_answer = parts[i+1].strip()
+
+                # Split question and answer - question ends with '?'
+                # Answer is the content after the question line
+                lines = question_and_answer.split('\n', 1)
+                question = lines[0].strip()
+
+                # Extract answer from remaining lines
+                answer = ''
+                if len(lines) > 1:
+                    answer_lines = lines[1].strip()
+                    # Remove leading/trailing whitespace and clean up
+                    answer = answer_lines.strip()
+
+                quiz_items.append({
+                    'question': question,
+                    'answer': answer
+                })
+
+        data['quiz_items'] = quiz_items
 
     # Extract deck names
     decks_match = re.search(r'## 7\. חפיסות קשורות - שמות בלבד\n(.*?)(?=\n##)', content, re.DOTALL)
@@ -141,7 +171,7 @@ def validate_data(data: Dict, md_path: str, assets_dir: str) -> List[str]:
     required_fields = [
         'hebrew_name', 'latin_name', 'color', 'verification',
         'summary', 'origin', 'insertion', 'innervation', 'action',
-        'clinical', 'quiz_questions'
+        'clinical', 'quiz_items'
     ]
 
     for field in required_fields:
@@ -167,10 +197,17 @@ def validate_data(data: Dict, md_path: str, assets_dir: str) -> List[str]:
         if not os.path.exists(full_path):
             errors.append(f"Illustration file not found: {full_path}")
 
-    # Validate quiz has exactly 3 questions
-    if 'quiz_questions' in data:
-        if len(data['quiz_questions']) != 3:
-            errors.append(f"Quiz must have exactly 3 questions, found {len(data['quiz_questions'])}")
+    # Validate quiz has exactly 3 question-answer pairs
+    if 'quiz_items' in data:
+        if len(data['quiz_items']) != 3:
+            errors.append(f"Quiz must have exactly 3 questions, found {len(data['quiz_items'])}")
+
+        # Validate each quiz item has both question and answer
+        for i, item in enumerate(data['quiz_items'], 1):
+            if not item.get('question'):
+                errors.append(f"Quiz question {i} is missing")
+            if not item.get('answer'):
+                errors.append(f"Quiz question {i} is missing an answer")
 
     # Check for forbidden patterns (URLs in deck names)
     if 'deck_names' in data:
@@ -331,9 +368,9 @@ def generate_html(data: Dict, shared_dir: str) -> str:
         <h2>בדוק את עצמך - למידה אקטיבית</h2>
         <p>לחצי על כל שאלה כדי לחשוף את התשובה, כמו תווית נסתרת בכרטיסייה.</p>'''
 
-    for question in data['quiz_questions']:
+    for item in data['quiz_items']:
         html += f'''
-        <details><summary>{question}</summary><p>תשובה מקובץ המקור</p></details>'''
+        <details><summary>{item['question']}</summary><p>{item['answer']}</p></details>'''
 
     html += '''
       </div>'''
@@ -384,13 +421,19 @@ def generate_html(data: Dict, shared_dir: str) -> str:
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python generate_concept.py <markdown_file> [output_file]")
-        print("Example: python generate_concept.py infraspinatus.md infraspinatus.html")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description='Generate Knowbody concept page from markdown',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog='Example: python generate_concept.py infraspinatus.md concepts/infraspinatus.html'
+    )
+    parser.add_argument('md_file', help='Input markdown file')
+    parser.add_argument('output_file', nargs='?', help='Output HTML file (prints to stdout if omitted)')
+    parser.add_argument('--force', action='store_true', help='Overwrite existing output file')
 
-    md_path = sys.argv[1]
-    output_path = sys.argv[2] if len(sys.argv) > 2 else None
+    args = parser.parse_args()
+
+    md_path = args.md_file
+    output_path = args.output_file
 
     # Determine paths
     script_dir = Path(__file__).parent.parent.parent
@@ -431,6 +474,12 @@ def main():
         sys.exit(1)
 
     if output_path:
+        # Check for existing file (overwrite protection)
+        if os.path.exists(output_path) and not args.force:
+            print(f"❌ Error: Output file already exists: {output_path}")
+            print(f"   Use --force to overwrite")
+            sys.exit(1)
+
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(html)
         print(f"✅ Generated: {output_path}")

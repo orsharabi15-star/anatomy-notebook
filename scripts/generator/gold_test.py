@@ -63,9 +63,35 @@ def compare_files(file1: str, file2: str) -> tuple:
 
 
 def main():
+    # Accept optional MD source path as argument
+    if len(sys.argv) > 1:
+        md_source = sys.argv[1]
+    else:
+        # Try to find in default locations
+        script_dir = Path(__file__).parent.parent.parent
+        possible_paths = [
+            script_dir / 'data' / 'research' / 'supraspinatus.md',
+            Path.home() / 'Downloads' / 'Knowbody 2' / '03_research' / 'גף-עליון' / 'supraspinatus.md',
+            Path.home() / 'Downloads' / 'Knowbody' / '03_research' / 'גף-עליון' / 'supraspinatus.md',
+        ]
+
+        md_source = None
+        for path in possible_paths:
+            if path.exists():
+                md_source = str(path)
+                break
+
+        if not md_source:
+            print(f"❌ Error: Source markdown not found in default locations")
+            print(f"   Tried:")
+            for p in possible_paths:
+                print(f"     - {p}")
+            print()
+            print(f"Usage: python {sys.argv[0]} [path/to/supraspinatus.md]")
+            sys.exit(1)
+
     # Determine paths
     script_dir = Path(__file__).parent.parent.parent
-    md_source = "/Users/orsharabi/Downloads/Knowbody 2/03_research/גף-עליון/supraspinatus.md"
     live_page = script_dir / 'concepts' / 'supraspinatus.html'
     assets_dir = script_dir / 'assets'
     shared_dir = script_dir / 'concepts' / 'shared'
@@ -78,7 +104,7 @@ def main():
     # Check if supraspinatus.md exists
     if not os.path.exists(md_source):
         print(f"❌ Error: Source markdown not found: {md_source}")
-        print("Please provide the path to supraspinatus.md")
+        print(f"Usage: python {sys.argv[0]} [path/to/supraspinatus.md]")
         sys.exit(1)
 
     print(f"📄 Source: {md_source}")
