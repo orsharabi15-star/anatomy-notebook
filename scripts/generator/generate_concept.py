@@ -74,30 +74,45 @@ def parse_markdown(md_path: str) -> Dict:
     if summary_match:
         data['summary'] = summary_match.group(1).strip()
 
-    # Extract OIAI table
-    oiai_match = re.search(r'## 3\. טבלת עובדות מפתח - OIAI\n(.*?)(?=\n## )', content, re.DOTALL)
+    # Detect page type: muscle (OIAI) or foramina table
+    oiai_match = re.search(r'## 3\. טבלת עובדות מפתח - OIAI', content)
+    foramina_match = re.search(r'## 3\. טבלת חרירים מפתח - לפי בורות גולגולת', content)
+
     if oiai_match:
-        oiai_section = oiai_match.group(1)
+        # Extract OIAI table (muscle format)
+        data['page_type'] = 'muscle'
+        oiai_section_match = re.search(r'## 3\. טבלת עובדות מפתח - OIAI\n(.*?)(?=\n## )', content, re.DOTALL)
+        if oiai_section_match:
+            oiai_section = oiai_section_match.group(1)
 
-        origin_match = re.search(r'- מוצא: (.+)', oiai_section)
-        if origin_match:
-            data['origin'] = origin_match.group(1)
+            origin_match = re.search(r'- מוצא: (.+)', oiai_section)
+            if origin_match:
+                data['origin'] = origin_match.group(1)
 
-        insertion_match = re.search(r'- אחז: (.+)', oiai_section)
-        if insertion_match:
-            data['insertion'] = insertion_match.group(1)
+            insertion_match = re.search(r'- אחז: (.+)', oiai_section)
+            if insertion_match:
+                data['insertion'] = insertion_match.group(1)
 
-        innervation_match = re.search(r'- עצבוב: (.+)', oiai_section)
-        if innervation_match:
-            data['innervation'] = innervation_match.group(1)
+            innervation_match = re.search(r'- עצבוב: (.+)', oiai_section)
+            if innervation_match:
+                data['innervation'] = innervation_match.group(1)
 
-        action_match = re.search(r'- פעולה: (.+)', oiai_section)
-        if action_match:
-            data['action'] = action_match.group(1)
+            action_match = re.search(r'- פעולה: (.+)', oiai_section)
+            if action_match:
+                data['action'] = action_match.group(1)
 
-        blood_match = re.search(r'- אספקת דם: (.+)', oiai_section)
-        if blood_match:
-            data['blood_supply'] = blood_match.group(1)
+            blood_match = re.search(r'- אספקת דם: (.+)', oiai_section)
+            if blood_match:
+                data['blood_supply'] = blood_match.group(1)
+
+    elif foramina_match:
+        # Extract foramina tables (skull foramina format)
+        data['page_type'] = 'foramina'
+        foramina_section_match = re.search(r'## 3\. טבלת חרירים מפתח - לפי בורות גולגולת\n(.*?)(?=\n## )', content, re.DOTALL)
+        if foramina_section_match:
+            foramina_section = foramina_section_match.group(1)
+            # Store the raw markdown tables - will be parsed for HTML generation
+            data['foramina_tables_raw'] = foramina_section.strip()
 
     # Extract clinical significance
     clinical_match = re.search(r'## 4\. משמעות קלינית - תיבה נפרדת\n\n(.+?)(?=\n##)', content, re.DOTALL)
@@ -126,30 +141,28 @@ def parse_markdown(md_path: str) -> Dict:
         # Split by numbered questions
         parts = re.split(r'\n(\d+)\. ', quiz_section)
 
-        # parts[0] is empty or whitespace before first question
-        # parts[1] = "1", parts[2] = question + answer text
-        # parts[3] = "2", parts[4] = question + answer text, etc.
+        # parts[0] contains first question starting with "1. ..."
+        # parts[1] = "2", parts[2] = second question + answer text
+        # parts[3] = "3", parts[4] = third question + answer text, etc.
 
+        # Process first question from parts[0]
+        if parts[0]:
+            first_q_match = re.match(r'^\d+\.\s*(.+)', parts[0], re.DOTALL)
+            if first_q_match:
+                question_and_answer = first_q_match.group(1).strip()
+                lines = question_and_answer.split('\n', 1)
+                question = lines[0].strip()
+                answer = lines[1].strip() if len(lines) > 1 else ''
+                quiz_items.append({'question': question, 'answer': answer})
+
+        # Process remaining questions
         for i in range(1, len(parts), 2):
             if i+1 < len(parts):
                 question_and_answer = parts[i+1].strip()
-
-                # Split question and answer - question ends with '?'
-                # Answer is the content after the question line
                 lines = question_and_answer.split('\n', 1)
                 question = lines[0].strip()
-
-                # Extract answer from remaining lines
-                answer = ''
-                if len(lines) > 1:
-                    answer_lines = lines[1].strip()
-                    # Remove leading/trailing whitespace and clean up
-                    answer = answer_lines.strip()
-
-                quiz_items.append({
-                    'question': question,
-                    'answer': answer
-                })
+                answer = lines[1].strip() if len(lines) > 1 else ''
+                quiz_items.append({'question': question, 'answer': answer})
 
         data['quiz_items'] = quiz_items
 
@@ -167,35 +180,51 @@ def validate_data(data: Dict, md_path: str, assets_dir: str) -> List[str]:
     """Validate all required fields and constraints. Returns list of errors."""
     errors = []
 
-    # Required fields
-    required_fields = [
+    # Common required fields for all page types
+    common_fields = [
         'hebrew_name', 'latin_name', 'color', 'verification',
-        'summary', 'origin', 'insertion', 'innervation', 'action',
-        'clinical', 'quiz_items'
+        'summary', 'clinical', 'quiz_items'
     ]
 
-    for field in required_fields:
+    for field in common_fields:
         if field not in data or not data[field]:
             errors.append(f"Missing required field: {field}")
+
+    # Page type specific validation
+    page_type = data.get('page_type', 'muscle')  # Default to muscle for backwards compatibility
+
+    if page_type == 'muscle':
+        # Muscle-specific fields (OIAI)
+        muscle_fields = ['origin', 'insertion', 'innervation', 'action']
+        for field in muscle_fields:
+            if field not in data or not data[field]:
+                errors.append(f"Missing required muscle field: {field}")
+
+    elif page_type == 'foramina':
+        # Foramina-specific fields
+        if 'foramina_tables_raw' not in data or not data['foramina_tables_raw']:
+            errors.append("Missing foramina tables content")
 
     # Validate color is in locked palette
     if 'color' in data:
         if data['color'] not in VALID_COLORS:
             errors.append(f"Color {data['color']} not in locked palette. Valid colors: {list(VALID_COLORS.keys())}")
 
-    # Validate illustration file exists if specified
+    # Validate illustration file exists if specified (skip placeholder markers)
     if 'illustration_file' in data and data['illustration_file']:
         illus_path = data['illustration_file']
-        # Extract just the filename
-        if '/' in illus_path:
-            illus_filename = illus_path.split('/')[-1]
-        else:
-            illus_filename = illus_path
+        # Skip validation for placeholder markers
+        if not illus_path.startswith('מציין מקום'):
+            # Extract just the filename
+            if '/' in illus_path:
+                illus_filename = illus_path.split('/')[-1]
+            else:
+                illus_filename = illus_path
 
-        # Check in assets/knowbody-atlas/
-        full_path = os.path.join(assets_dir, 'knowbody-atlas', illus_filename)
-        if not os.path.exists(full_path):
-            errors.append(f"Illustration file not found: {full_path}")
+            # Check in assets/knowbody-atlas/
+            full_path = os.path.join(assets_dir, 'knowbody-atlas', illus_filename)
+            if not os.path.exists(full_path):
+                errors.append(f"Illustration file not found: {full_path}")
 
     # Validate quiz has exactly 3 question-answer pairs
     if 'quiz_items' in data:
@@ -230,6 +259,42 @@ def validate_data(data: Dict, md_path: str, assets_dir: str) -> List[str]:
             errors.append(f"Possible secret detected: {pattern}")
 
     return errors
+
+
+def parse_markdown_table_to_html(md_table: str, color: str) -> str:
+    """Convert markdown table to HTML table with styling"""
+    lines = [line.strip() for line in md_table.strip().split('\n') if line.strip()]
+
+    if len(lines) < 3:  # Need header, separator, and at least one row
+        return ""
+
+    # Parse header
+    headers = [h.strip() for h in lines[0].split('|') if h.strip()]
+
+    # Skip separator line (lines[1])
+
+    # Parse data rows
+    rows = []
+    for line in lines[2:]:
+        cells = [cell.strip() for cell in line.split('|') if cell.strip()]
+        if cells:
+            rows.append(cells)
+
+    # Build HTML table
+    html = '<table>\n'
+    html += '  <thead>\n    <tr>'
+    for header in headers:
+        html += f'<th>{header}</th>'
+    html += '</tr>\n  </thead>\n'
+    html += '  <tbody>\n'
+    for row in rows:
+        html += '    <tr>'
+        for cell in row:
+            html += f'<td>{cell}</td>'
+        html += '</tr>\n'
+    html += '  </tbody>\n</table>'
+
+    return html
 
 
 def generate_html(data: Dict, shared_dir: str) -> str:
@@ -282,7 +347,13 @@ def generate_html(data: Dict, shared_dir: str) -> str:
   </div>
 </header>
 
-<div class="wrap">
+<div class="wrap">'''
+
+    # Dynamic breadcrumb and sidebar based on page type
+    page_type = data.get('page_type', 'muscle')
+
+    if page_type == 'muscle':
+        html += f'''
   <div class="crumb"><span>מערכות הגוף</span> &gt; <span>שרירים</span> &gt; <span>גף עליון</span> &gt; {data['hebrew_name']}</div>
   <div class="layout">
     <aside class="side">
@@ -311,9 +382,110 @@ def generate_html(data: Dict, shared_dir: str) -> str:
 
       <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
         <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי, לפני שנכנסים לדף השריר - לא כאן. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>'''
+
+    elif page_type == 'foramina':
+        html += f'''
+  <div class="crumb"><span>מערכות הגוף</span> &gt; <span>ראש וצוואר</span> &gt; <span>גולגולת</span> &gt; {data['hebrew_name']}</div>
+  <div class="layout">
+    <aside class="side">
+      <h3>ניווט</h3>
+      <a href="../index.html">דף הבית</a>
+      <a href="skull-foramina.html">גולגולת וראש-צוואר</a>
+      <a href="decks.html">חפיסות</a>
+      <h3>נושאי גולגולת</h3>
+      <a href="skull-foramina.html"><span class="dot" style="background:#1e3a8a"></span>חרירי גולגולת</a>
+      <h3>החפיסות שלי</h3>
+      <a href="decks.html#topic">עצבים קרניאליים</a>
+      <a href="decks.html#topic">חרירי גולגולת</a>
+      <a href="decks.html#topic">עצמות הגולגולת</a>
+    </aside>
+
+    <main>
+      <div class="hero">
+        <span class="pilot">פיילוט - Knowbody דפי מושג</span>
+        <h1>{data['hebrew_name']}</h1>
+        <div class="latin">{data['latin_name']}</div>
       </div>
 
+      <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
+        <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי, לפני שנכנסים לדף המושג - לא כאן. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>'''
+
+    else:
+        # Generic fallback
+        html += f'''
+  <div class="crumb"><span>מערכות הגוף</span> &gt; {data['hebrew_name']}</div>
+  <div class="layout">
+    <aside class="side">
+      <h3>ניווט</h3>
+      <a href="../index.html">דף הבית</a>
+      <a href="decks.html">חפיסות</a>
+    </aside>
+
+    <main>
+      <div class="hero">
+        <span class="pilot">פיילוט - Knowbody דפי מושג</span>
+        <h1>{data['hebrew_name']}</h1>
+        <div class="latin">{data['latin_name']}</div>
+        <p>{data['summary']}</p>
+      </div>
+
+      <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
+        <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>'''
+
+    # Generate content based on page type
+    page_type = data.get('page_type', 'muscle')
+
+    if page_type == 'foramina':
+        # For foramina pages: add grid with summary and illustration first
+        illus_file = data.get('illustration_file', '')
+        illus_desc = data.get('illustration_desc', 'איור')
+        illus_title = "איור - אטלס גולגולת"
+
+        html += f'''
+
       <div class="glass sec" style="--ac:{data['color'].lower()}">
+        <div class="grid">
+          <div>
+            <h2>תקציר</h2>
+            <p>{data['summary']}</p>
+          </div>
+          <div>'''
+
+        # Add illustration in the grid
+        if illus_file.startswith('מציין מקום'):
+            # Placeholder box (no image, no credit)
+            html += f'''
+            <h2>{illus_title}</h2>
+            <p class="sub">{illus_desc}</p>
+            <div class="viewer"><div>
+              <p><b>מקום שמור לאיור</b></p>
+              <p class="small">בפיילוט הזה אין עדיין איור CC מאומת - האזור מסמן מקום בלבד</p>
+            </div></div>'''
+        else:
+            # Actual illustration with image and credit
+            illus_filename = illus_file.split('/')[-1]
+            illus_path = f"../assets/knowbody-atlas/{illus_filename}"
+            html += f'''
+            <h2>{illus_title}</h2>
+            <p class="sub">{illus_desc}</p>
+            <img src="{illus_path}" alt="{illus_desc}" class="atlas-img">
+            <p class="credit">UBC Clinical Anatomy via LibreTexts, CC BY-NC-SA 4.0</p>'''
+
+        html += '''
+          </div>
+        </div>
+      </div>'''
+
+    html += f'''
+
+      <div class="glass sec" style="--ac:{data['color'].lower()}">'''
+
+    if page_type == 'muscle':
+        # OIAI table for muscles
+        html += f'''
         <div class="grid">
           <div>
             <h2>טבלת עובדות מפתח - OIAI</h2>
@@ -323,12 +495,12 @@ def generate_html(data: Dict, shared_dir: str) -> str:
               <tr style="--rc:{OIAI_ROW_COLORS['innervation']}"><th>עצבוב</th><td>{data['innervation']}</td></tr>
               <tr style="--rc:{OIAI_ROW_COLORS['action']}"><th>פעולה</th><td>{data['action']}</td></tr>'''
 
-    # Add blood supply if present
-    if 'blood_supply' in data and data['blood_supply']:
-        html += f'''
+        # Add blood supply if present
+        if 'blood_supply' in data and data['blood_supply']:
+            html += f'''
               <tr style="--rc:{OIAI_ROW_COLORS['blood']}"><th>אספקת דם</th><td>{data['blood_supply']}</td></tr>'''
 
-    html += f'''
+        html += '''
             </table>
           </div>
           <div>
@@ -338,7 +510,33 @@ def generate_html(data: Dict, shared_dir: str) -> str:
               <p class="small">בפיילוט הזה אין עדיין מודל GLB - האזור מסמן מקום בלבד, ללא טענת קרדיט למקור ספציפי</p>
             </div></div>
           </div>
-        </div>
+        </div>'''
+
+    elif page_type == 'foramina':
+        # Foramina tables for skull
+        html += '''
+        <h2>טבלת חרירים מפתח - לפי בורות גולגולת</h2>'''
+
+        # Split the raw markdown by subsections (anterior, middle, posterior fossa)
+        foramina_raw = data.get('foramina_tables_raw', '')
+        sections = re.split(r'###\s+(.+?)\n', foramina_raw)
+
+        # sections[0] is empty or intro text
+        # sections[1] = first subsection title, sections[2] = first table
+        # sections[3] = second subsection title, sections[4] = second table, etc.
+
+        for i in range(1, len(sections), 2):
+            if i+1 < len(sections):
+                subsection_title = sections[i].strip()
+                table_markdown = sections[i+1].strip()
+
+                html += f'''
+        <h3>{subsection_title}</h3>
+        <div style="overflow-x: auto;">
+{parse_markdown_table_to_html(table_markdown, data['color'])}
+        </div>'''
+
+    html += f'''
       </div>
 
       <div class="glass sec" style="--ac:#65a30d">
@@ -346,16 +544,35 @@ def generate_html(data: Dict, shared_dir: str) -> str:
         <div class="clinical"><p>{data['clinical']}</p></div>
       </div>'''
 
-    # Add illustration if present
-    if 'illustration_file' in data and data['illustration_file']:
-        illus_filename = data['illustration_file'].split('/')[-1]
-        illus_path = f"../assets/knowbody-atlas/{illus_filename}"
+    # Add illustration if present (only for muscle pages - foramina has it in grid above)
+    page_type = data.get('page_type', 'muscle')
+    if page_type == 'muscle' and 'illustration_file' in data and data['illustration_file']:
+        illus_file = data['illustration_file']
         illus_desc = data.get('illustration_desc', 'איור')
+        illus_title = "איור - אטלס שרירי כתף"
 
-        html += f'''
+        # Check if this is a placeholder or actual illustration
+        if illus_file.startswith('מציין מקום'):
+            # Placeholder box (no image, no credit)
+            html += f'''
 
       <div class="glass sec" style="--ac:{data['color'].lower()}">
-        <h2>איור - אטלס שרירי כתף</h2>
+        <h2>{illus_title}</h2>
+        <p class="sub">{illus_desc}</p>
+        <div class="viewer"><div>
+          <p><b>מקום שמור לאיור</b></p>
+          <p class="small">בפיילוט הזה אין עדיין איור CC מאומת - האזור מסמן מקום בלבד</p>
+        </div></div>
+      </div>'''
+        else:
+            # Actual illustration with image and credit
+            illus_filename = illus_file.split('/')[-1]
+            illus_path = f"../assets/knowbody-atlas/{illus_filename}"
+
+            html += f'''
+
+      <div class="glass sec" style="--ac:{data['color'].lower()}">
+        <h2>{illus_title}</h2>
         <p class="sub">{illus_desc}</p>
         <img src="{illus_path}" alt="{illus_desc}" class="atlas-img">
         <p class="credit">UBC Clinical Anatomy via LibreTexts, CC BY-NC-SA 4.0</p>
