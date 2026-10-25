@@ -59,12 +59,25 @@ details.deck[open] summary .exp::before { content: '-'; }
 .footbar b { color: #fff; }
 .footbar a { color: #dbeafe; display: block; margin: 6px 0; }
 .footbar a:hover { color: #fff; text-decoration: none; }
+.menu-toggle { display: none; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 10px; padding: 8px 14px; font-size: 22px; cursor: pointer; margin-inline-start: auto; }
+.menu-toggle:hover { background: rgba(255,255,255,0.22); }
+.mobile-menu { display: none; background: linear-gradient(180deg, rgba(46,74,178,0.98), rgba(30,58,138,0.95)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,0.18); box-shadow: 0 8px 20px rgba(30,58,138,0.3); padding: 12px 18px; }
+.mobile-menu.open { display: block; }
+.mobile-menu a, .mobile-menu span { display: block; color: #dbeafe; text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: 12px; margin: 4px 0; }
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(255,255,255,0.18); color: #fff; }
+.mobile-menu span { opacity: 0.7; }
+details.section summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+details.section summary::-webkit-details-marker { display: none; }
+details.section summary .section-exp::before { content: '+'; color: #1e3a8a; font-weight: 900; font-size: 22px; margin-left: 10px; }
+details.section[open] summary .section-exp::before { content: '-'; }
 @media (max-width: 900px) {
   .layout, .grid, .grid2, .footbar-in { grid-template-columns: 1fr; }
   .side { position: static; order: -1; }
   .hero h1 { font-size: 32px; }
   body { font-size: 18px; }
   .brand-logo { height: 30px; }
+  .topnav { display: none; }
+  .menu-toggle { display: block; }
 }
 </style>
 </head>
@@ -75,7 +88,15 @@ details.deck[open] summary .exp::before { content: '-'; }
     <span><small>דפי מושג • שנה ב'</small></span>
   </a>
   <nav class="topnav"><a href="supraspinatus.html">דפי מושג</a><span style="color: #dbeafe; font-size: 16px; font-weight: 500; padding: 8px 13px;">מערכות הגוף</span><a href="decks.html" class="active">חפיסות</a><span style="color: #dbeafe; font-size: 16px; font-weight: 500; padding: 8px 13px;">ההתקדמות שלי</span></nav>
-</div></header>
+  <button class="menu-toggle" id="menuToggle" aria-label="תפריט ניווט" aria-expanded="false">☰</button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="supraspinatus.html">דפי מושג</a>
+  <span>מערכות הגוף</span>
+  <a href="decks.html" class="active">חפיסות</a>
+  <span>ההתקדמות שלי</span>
+</div>
+</header>
 
 <div class="wrap"><div class="layout">
   <aside class="side">
@@ -93,11 +114,11 @@ details.deck[open] summary .exp::before { content: '-'; }
       <span class="pilot">דף החפיסות הראשי - פיילוט</span>
       <h1>חפיסות</h1>
       <p>קודם בוחרים איך ללמוד, ורק אחר כך נכנסים לדף שריר. הבחירה קורית כאן, לא בתוך דף המושג.</p>
-      <div><button type="button" onclick="document.querySelectorAll('details.deck').forEach(d=>d.open=true)" style="font-family:inherit; background:#1e3a8a; color:#fff; border:0; padding:8px 16px; border-radius:20px; cursor:pointer; font-size:15px;">הרחב הכל</button> <button type="button" onclick="document.querySelectorAll('details.deck').forEach(d=>d.open=false)" style="font-family:inherit; background:#fff; color:#1e3a8a; border:1px solid #1e3a8a; padding:8px 16px; border-radius:20px; cursor:pointer; font-size:15px;">צמצם הכל</button></div>
+      <div><button type="button" id="expandAllBtn" style="font-family:inherit; background:#1e3a8a; color:#fff; border:0; padding:8px 16px; border-radius:20px; cursor:pointer; font-size:15px;">הרחב הכל</button> <button type="button" id="collapseAllBtn" style="font-family:inherit; background:#fff; color:#1e3a8a; border:1px solid #1e3a8a; padding:8px 16px; border-radius:20px; cursor:pointer; font-size:15px;">צמצם הכל</button></div>
     </div>
 
-    <div class="card" id="topic" style="--ac:#e11d48">
-      <h2>א. לפי נושא - שרירי גף עליון</h2>
+    <details class="section card" id="topic" style="--ac:#e11d48" open>
+      <summary><h2>א. לפי נושא - שרירי גף עליון</h2><span class="section-exp"></span></summary>
       <p class="sub">בחרי שריר, ראי את החפיסות שלו, ורק אז החליטי אם להיכנס לדף המושג או ישר ללמידה. שמות חפיסות בלבד - קישורים אמיתיים ייכנסו מהאפליקציה.</p>
       <div class="grid2">
         <details class="deck" open style="--c:#e11d48" id="supraspinatus"><summary><b>סופראספינאטוס</b> <span class="exp"></span></summary><div class="deck-body"><span>OIAI - 19 כרטיסים, כרטיס 11 • זיהוי - 20 כרטיסים, כרטיס 12 • אטלס SITS - כרטיס 10</span><br><a class="btn-light" href="supraspinatus.html">לדף המושג</a></div></details>
@@ -105,10 +126,10 @@ details.deck[open] summary .exp::before { content: '-'; }
         <details class="deck" style="--c:#d97706"><summary><b>טרס מינור</b> <span class="exp"></span></summary><div class="deck-body"><span>חפיסות OIAI וזיהוי של שרירי גף עליון - לפי אותה תבנית</span></div></details>
         <details class="deck" style="--c:#65a30d"><summary><b>סובסקפולריס ודלתואיד</b> <span class="exp"></span></summary><div class="deck-body"><span>חפיסות OIAI וזיהוי של שרירי גף עליון - לפי אותה תבנית</span></div></details>
       </div>
-    </div>
+    </details>
 
-    <div class="card" id="general" style="--ac:#0891b2">
-      <h2>ב. נושאים כלליים - לפי מערכת</h2>
+    <details class="section card" id="general" style="--ac:#0891b2" open>
+      <summary><h2>ב. נושאים כלליים - לפי מערכת</h2><span class="section-exp"></span></summary>
       <p class="sub">לא לפי מצגת ולא לפי שבוע, אלא לפי מה שזה: שריר, עצם, מפרק, עצב, כלי דם.</p>
       <div class="grid">
         <details class="deck" style="--c:#e11d48"><summary><b>שרירים</b> <span class="exp"></span></summary><div class="deck-body"><span>OIAI + זיהוי + אטלס</span></div></details>
@@ -118,23 +139,23 @@ details.deck[open] summary .exp::before { content: '-'; }
         <details class="deck" style="--c:#7c3aed"><summary><b>כלי דם</b> <span class="exp"></span></summary><div class="deck-body"><span>עורקים, ורידים ולימפה</span></div></details>
         <details class="deck" style="--c:#1e3a8a"><summary><b>כל המערכות</b> <span class="exp"></span></summary><div class="deck-body"><span>מעבר לדף מערכות הגוף</span></div></details>
       </div>
-    </div>
+    </details>
 
-    <div class="card" id="mixed" style="--ac:#d97706">
-      <h2>ג. מעורבב - סשן חזרה בלי סדר לימוד</h2>
+    <details class="section card" id="mixed" style="--ac:#d97706" open>
+      <summary><h2>ג. מעורבב - סשן חזרה בלי סדר לימוד</h2><span class="section-exp"></span></summary>
       <p class="sub">בוחרים כמה כרטיסים ומאילו מערכות, והסשן מערבב אותם. טוב לחזרה לפני מבחן, כשהבעיה היא שליפה ולא עוד תוכן.</p>
       <div><span class="chip">10 כרטיסים</span><span class="chip">20 כרטיסים</span><span class="chip">50 כרטיסים</span></div>
       <div><span class="chip">שרירים בלבד</span><span class="chip">שרירים + עצבים</span><span class="chip">הכל מעורבב</span></div>
       <span class="btn" style="cursor: not-allowed; opacity: 0.6;">התחל סשן מעורבב (בקרוב)</span>
       <p style="font-size:15px; color:#4b5563;">הערה: סשן מעורבב באפליקציה עצמה עדיין לא הוזמן כפיצ'ר - כאן זו רק הצעת מבנה לדף הראשי.</p>
-    </div>
+    </details>
 
-    <div class="card" id="dictionary" style="--ac:#1e3a8a">
-      <h2>ד. מילון</h2>
+    <details class="section card" id="dictionary" style="--ac:#1e3a8a" open>
+      <summary><h2>ד. מילון</h2><span class="section-exp"></span></summary>
       <p class="sub">כל מונח - עברית + לטינית + הגדרה במשפט + הכרטיסייה שמתרגלת אותו. חיפוש במילון נמצא גם בתפריט העליון.</p>
       <p><b>דוגמאות מדף סופראספינאטוס:</b> supraspinous fossa • greater tubercle • suprascapular nerve • impingement</p>
       <span class="btn-light" style="cursor: not-allowed; opacity: 0.6;">פתח את המילון המלא (בקרוב)</span>
-    </div>
+    </details>
   </main>
 </div></div>
 
@@ -143,5 +164,62 @@ details.deck[open] summary .exp::before { content: '-'; }
   <div><b>ניווט</b><a href="supraspinatus.html">דפי מושג</a><a href="decks.html">חפיסות</a><a href="../index.html">חזרה למחברת</a></div>
   <div><b>מקורות</b><a href="https://flashcards-bd849.web.app">אפליקציית הכרטיסיות</a><span style="color: #dbeafe; display: block; margin: 6px 0;">היקף לפי חומרי הקורס; עובדות מאומתות מול אתרים ותיקים.</span></div>
 </div></footer>
+
+<script>
+(function() {
+  // Mobile menu toggle
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    toggle.textContent = '☰';
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    menu.classList.add('open');
+    toggle.textContent = '✕';
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (menu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== toggle) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+
+  // Section expand/collapse buttons
+  const expandBtn = document.getElementById('expandAllBtn');
+  const collapseBtn = document.getElementById('collapseAllBtn');
+
+  expandBtn.addEventListener('click', function() {
+    document.querySelectorAll('details.section').forEach(function(section) {
+      section.open = true;
+    });
+  });
+
+  collapseBtn.addEventListener('click', function() {
+    document.querySelectorAll('details.section').forEach(function(section) {
+      section.open = false;
+    });
+  });
+})();
+</script>
 </body>
 </html>
