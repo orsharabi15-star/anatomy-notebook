@@ -43,8 +43,8 @@
 | תעלת הראייה (Optic canal) | Lesser wing of sphenoid, בקודקוד הארובה | Optic nerve (CN II), Ophthalmic artery |
 | סדק ארובתי עליון (Superior orbital fissure) | בין ה-lesser wing וה-greater wing של ה-sphenoid | CN III, IV, VI; Lacrimal, Frontal, Nasociliary (ענפי V1); Superior ophthalmic vein |
 | סדק ארובתי תחתון (Inferior orbital fissure) | בין ה-greater wing של ה-sphenoid לבין ה-maxilla וה-palatine; מצד לטרלי zygomatic | Zygomatic nerve, Infraorbital nerve (V2), Infraorbital vessels, Inferior ophthalmic vein |
-| Anterior ethmoidal foramen | בצומת הגג והדופן המדיאלית | Anterior ethmoidal vessels and nerve |
-| Posterior ethmoidal foramen | בצומת הגג והדופן המדיאלית | Posterior ethmoidal vessels and nerve |
+| נקב אתמואידי קדמי (Anterior ethmoidal foramen) | בצומת הגג והדופן המדיאלית | Anterior ethmoidal vessels and nerve |
+| נקב אתמואידי אחורי (Posterior ethmoidal foramen) | בצומת הגג והדופן המדיאלית | Posterior ethmoidal vessels and nerve |
 
 ## 4. משמעות קלינית - תיבה נפרדת
 
@@ -86,4 +86,4 @@
 - TeachMeAnatomy: The Bony Orbit - דפנות, פתחים, שברים
 - StatPearls: Anatomy, Head and Neck, Orbit Bones - דפנות וגבולות הסדקים
 - חומרי הקורס: היקף בלבד
-- שמות עבריים: לפי רשימה מאושרת; לנקבי ה-ethmoidal לא נמסר שם עברי ולכן מופיע השם הלטיני בלבד
+- שמות עבריים: לפי רשימה מאושרת
