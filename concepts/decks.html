@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חפיסות | Knowbody - דפי מושג</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html { direction: rtl; }
+body { font-family: "Heebo", "Segoe UI", Arial, sans-serif; margin: 0; line-height: 1.85; font-size: 19px; color: #111827; text-align: right; background: #f4eee1; }
+a { color: #1e3a8a; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.topbar { background: linear-gradient(180deg, rgba(46,74,178,0.96), rgba(30,58,138,0.92)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.28); box-shadow: 0 10px 30px rgba(30,58,138,0.35), inset 0 1px 0 rgba(255,255,255,0.35); color: #fff; position: sticky; top: 0; z-index: 10; }
+.topbar-in { max-width: 1180px; margin: auto; padding: 14px 18px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 22px; color: #fff; text-decoration: none; }
+.brand:hover { text-decoration: none; }
+.brand-logo { height: 36px; width: auto; }
+.brand small { display: block; font-size: 13px; font-weight: 500; color: #cde8ee; line-height: 1.3; }
+.topnav { display: flex; gap: 6px; flex-wrap: wrap; }
+.topnav a { color: #dbeafe; text-decoration: none; font-size: 16px; font-weight: 500; padding: 8px 13px; border-radius: 20px; }
+.topnav a.active, .topnav a:hover { background: rgba(255,255,255,0.18); color: #fff; text-decoration: none; }
+.wrap { max-width: 1180px; margin: auto; padding: 24px 18px 40px; }
+.layout { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: start; }
+.side { background: #fffdf8; border: 1px solid #e7ddc8; border-radius: 18px; padding: 20px; position: sticky; top: 76px; }
+.side h3 { font-size: 16px; margin: 20px 0 10px; color: #1e3a8a; }
+.side h3:first-child { margin-top: 0; }
+.side a { display: block; text-decoration: none; color: #374151; font-size: 16px; padding: 9px 12px; border-radius: 10px; }
+.side a:hover { background: #f4eee1; text-decoration: none; }
+.side a.active { background: #1e3a8a; color: #fff; font-weight: 700; }
+.hero { border-radius: 24px; padding: 38px; background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 12px 32px rgba(17,24,39,0.08); }
+.hero::after { content: ""; display: block; height: 5px; margin-top: 22px; border-radius: 5px; background: linear-gradient(90deg, #e11d48, #d97706, #65a30d, #0891b2, #7c3aed); }
+.hero h1 { font-size: 40px; font-weight: 900; margin: 8px 0; }
+.hero p { color: #374151; max-width: 700px; }
+.pilot { display: inline-block; background: #1e3a8a; color: #fff; font-size: 14px; font-weight: 700; padding: 6px 13px; border-radius: 20px; }
+.card { background: #ffffff; border: 1px solid #e5e7eb; border-top: 4px solid var(--ac, #1e3a8a); border-radius: 20px; padding: 28px; margin-top: 28px; box-shadow: 0 10px 28px rgba(17,24,39,0.07); }
+.card h2 { font-size: 25px; font-weight: 900; margin: 0 0 12px; padding-right: 14px; border-right: 5px solid var(--ac, #1e3a8a); }
+.card h3 { font-size: 19px; margin: 18px 0 8px; }
+.sub { color: #4b5563; font-size: 17px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
+.deck { border-radius: 14px; padding: 18px; background: #f9fafb; border: 1px solid #e5e7eb; border-top: 5px solid var(--c); }
+.deck b { display: block; font-size: 17px; }
+details.deck summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+details.deck summary::-webkit-details-marker { display: none; }
+details.deck summary .exp::before { content: '+'; color: #1e3a8a; font-weight: 900; font-size: 20px; }
+details.deck[open] summary .exp::before { content: '-'; }
+.deck-body { margin-top: 10px; }
+.deck span { font-size: 15px; color: #4b5563; }
+.chip { display: inline-block; padding: 6px 13px; border-radius: 20px; background: #f3f4f6; border: 1px solid #e5e7eb; font-size: 15px; margin: 4px; }
+.btn { display: inline-block; background: #1e3a8a; color: #fff; text-decoration: none; font-weight: 700; padding: 10px 18px; border-radius: 20px; font-size: 16px; margin-top: 10px; }
+.btn:hover { background: #2e4ab2; text-decoration: none; }
+.btn-light { display: inline-block; background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; text-decoration: none; font-weight: 700; padding: 10px 18px; border-radius: 20px; font-size: 16px; margin-top: 10px; }
+.btn-light:hover { background: #f3f4f6; text-decoration: none; }
+.footbar { background: linear-gradient(180deg, #2e4ab2, #1e3a8a); border-top: 1px solid rgba(255,255,255,0.28); color: #dbeafe; margin-top: 20px; }
+.footbar-in { max-width: 1180px; margin: auto; padding: 28px 18px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; font-size: 15px; }
+.footbar b { color: #fff; }
+.footbar a { color: #dbeafe; display: block; margin: 6px 0; }
+.footbar a:hover { color: #fff; text-decoration: none; }
+@media (max-width: 900px) {
+  .layout, .grid, .grid2, .footbar-in { grid-template-columns: 1fr; }
+  .side { position: static; order: -1; }
+  .hero h1 { font-size: 32px; }
+  body { font-size: 18px; }
+  .brand-logo { height: 30px; }
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">
+    <img class="brand-logo" src="../assets/knowbody-logo/knowbody-logo-H-topbar.svg" alt="Knowbody">
+    <span><small>דפי מושג • שנה ב'</small></span>
+  </a>
+  <nav class="topnav"><a href="supraspinatus.html">דפי מושג</a><span style="color: #dbeafe; font-size: 16px; font-weight: 500; padding: 8px 13px;">מערכות הגוף</span><a href="decks.html" class="active">חפיסות</a><span style="color: #dbeafe; font-size: 16px; font-weight: 500; padding: 8px 13px;">ההתקדמות שלי</span></nav>
+</div></header>
+
+<div class="wrap"><div class="layout">
+  <aside class="side">
+    <h3>איך ללמוד?</h3>
+    <a href="#topic">לפי נושא</a>
+    <a href="#general">נושאים כלליים</a>
+    <a href="#mixed">מעורבב</a>
+    <a href="#dictionary">מילון</a>
+    <h3>המשך מאיפה שעצרת</h3>
+    <span style="color: #374151; font-size: 16px; padding: 9px 12px; display: block;">OIAI שרירי גף עליון - כרטיס 11</span>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <span class="pilot">דף החפיסות הראשי - פיילוט</span>
+      <h1>חפיסות</h1>
+      <p>קודם בוחרים איך ללמוד, ורק אחר כך נכנסים לדף שריר. הבחירה קורית כאן, לא בתוך דף המושג.</p>
+      <div><button type="button" onclick="document.querySelectorAll('details.deck').forEach(d=>d.open=true)" style="font-family:inherit; background:#1e3a8a; color:#fff; border:0; padding:8px 16px; border-radius:20px; cursor:pointer; font-size:15px;">הרחב הכל</button> <button type="button" onclick="document.querySelectorAll('details.deck').forEach(d=>d.open=false)" style="font-family:inherit; background:#fff; color:#1e3a8a; border:1px solid #1e3a8a; padding:8px 16px; border-radius:20px; cursor:pointer; font-size:15px;">צמצם הכל</button></div>
+    </div>
+
+    <div class="card" id="topic" style="--ac:#e11d48">
+      <h2>א. לפי נושא - שרירי גף עליון</h2>
+      <p class="sub">בחרי שריר, ראי את החפיסות שלו, ורק אז החליטי אם להיכנס לדף המושג או ישר ללמידה. שמות חפיסות בלבד - קישורים אמיתיים ייכנסו מהאפליקציה.</p>
+      <div class="grid2">
+        <details class="deck" open style="--c:#e11d48" id="supraspinatus"><summary><b>סופראספינאטוס</b> <span class="exp"></span></summary><div class="deck-body"><span>OIAI - 19 כרטיסים, כרטיס 11 • זיהוי - 20 כרטיסים, כרטיס 12 • אטלס SITS - כרטיס 10</span><br><a class="btn-light" href="supraspinatus.html">לדף המושג</a></div></details>
+        <details class="deck" style="--c:#0891b2"><summary><b>אינפראספינאטוס</b> <span class="exp"></span></summary><div class="deck-body"><span>חפיסות OIAI וזיהוי של שרירי גף עליון - לפי אותה תבנית</span></div></details>
+        <details class="deck" style="--c:#d97706"><summary><b>טרס מינור</b> <span class="exp"></span></summary><div class="deck-body"><span>חפיסות OIAI וזיהוי של שרירי גף עליון - לפי אותה תבנית</span></div></details>
+        <details class="deck" style="--c:#65a30d"><summary><b>סובסקפולריס ודלתואיד</b> <span class="exp"></span></summary><div class="deck-body"><span>חפיסות OIAI וזיהוי של שרירי גף עליון - לפי אותה תבנית</span></div></details>
+      </div>
+    </div>
+
+    <div class="card" id="general" style="--ac:#0891b2">
+      <h2>ב. נושאים כלליים - לפי מערכת</h2>
+      <p class="sub">לא לפי מצגת ולא לפי שבוע, אלא לפי מה שזה: שריר, עצם, מפרק, עצב, כלי דם.</p>
+      <div class="grid">
+        <details class="deck" style="--c:#e11d48"><summary><b>שרירים</b> <span class="exp"></span></summary><div class="deck-body"><span>OIAI + זיהוי + אטלס</span></div></details>
+        <details class="deck" style="--c:#0891b2"><summary><b>עצמות</b> <span class="exp"></span></summary><div class="deck-body"><span>בהמתנה למיפוי מלא - לא ממציאים מספרים</span></div></details>
+        <details class="deck" style="--c:#d97706"><summary><b>מפרקים</b> <span class="exp"></span></summary><div class="deck-body"><span>ניקוי חפיסות קודם, ואז joints v2</span></div></details>
+        <details class="deck" style="--c:#65a30d"><summary><b>עצבים</b> <span class="exp"></span></summary><div class="deck-body"><span>מקלעת הזרוע ועצבים היקפיים</span></div></details>
+        <details class="deck" style="--c:#7c3aed"><summary><b>כלי דם</b> <span class="exp"></span></summary><div class="deck-body"><span>עורקים, ורידים ולימפה</span></div></details>
+        <details class="deck" style="--c:#1e3a8a"><summary><b>כל המערכות</b> <span class="exp"></span></summary><div class="deck-body"><span>מעבר לדף מערכות הגוף</span></div></details>
+      </div>
+    </div>
+
+    <div class="card" id="mixed" style="--ac:#d97706">
+      <h2>ג. מעורבב - סשן חזרה בלי סדר לימוד</h2>
+      <p class="sub">בוחרים כמה כרטיסים ומאילו מערכות, והסשן מערבב אותם. טוב לחזרה לפני מבחן, כשהבעיה היא שליפה ולא עוד תוכן.</p>
+      <div><span class="chip">10 כרטיסים</span><span class="chip">20 כרטיסים</span><span class="chip">50 כרטיסים</span></div>
+      <div><span class="chip">שרירים בלבד</span><span class="chip">שרירים + עצבים</span><span class="chip">הכל מעורבב</span></div>
+      <span class="btn" style="cursor: not-allowed; opacity: 0.6;">התחל סשן מעורבב (בקרוב)</span>
+      <p style="font-size:15px; color:#4b5563;">הערה: סשן מעורבב באפליקציה עצמה עדיין לא הוזמן כפיצ'ר - כאן זו רק הצעת מבנה לדף הראשי.</p>
+    </div>
+
+    <div class="card" id="dictionary" style="--ac:#1e3a8a">
+      <h2>ד. מילון</h2>
+      <p class="sub">כל מונח - עברית + לטינית + הגדרה במשפט + הכרטיסייה שמתרגלת אותו. חיפוש במילון נמצא גם בתפריט העליון.</p>
+      <p><b>דוגמאות מדף סופראספינאטוס:</b> supraspinous fossa • greater tubercle • suprascapular nerve • impingement</p>
+      <span class="btn-light" style="cursor: not-allowed; opacity: 0.6;">פתח את המילון המלא (בקרוב)</span>
+    </div>
+  </main>
+</div></div>
+
+<footer class="footbar"><div class="footbar-in">
+  <div><b>Knowbody - דפי מושג</b><br>קודם בוחרים חפיסה בדף הראשי, ורק אחר כך נכנסים לדף מושג.</div>
+  <div><b>ניווט</b><a href="supraspinatus.html">דפי מושג</a><a href="decks.html">חפיסות</a><a href="../index.html">חזרה למחברת</a></div>
+  <div><b>מקורות</b><a href="https://flashcards-bd849.web.app">אפליקציית הכרטיסיות</a><span style="color: #dbeafe; display: block; margin: 6px 0;">היקף לפי חומרי הקורס; עובדות מאומתות מול אתרים ותיקים.</span></div>
+</div></footer>
+</body>
+</html>
