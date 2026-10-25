@@ -406,7 +406,6 @@ def generate_html(data: Dict, shared_dir: str) -> str:
         <span class="pilot">פיילוט - Knowbody דפי מושג</span>
         <h1>{data['hebrew_name']}</h1>
         <div class="latin">{data['latin_name']}</div>
-        <p>{data['summary']}</p>
       </div>
 
       <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
@@ -436,12 +435,53 @@ def generate_html(data: Dict, shared_dir: str) -> str:
         <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי. <a href="decks.html#topic">לדף החפיסות</a>.</p>
       </div>'''
 
+    # Generate content based on page type
+    page_type = data.get('page_type', 'muscle')
+
+    if page_type == 'foramina':
+        # For foramina pages: add grid with summary and illustration first
+        illus_file = data.get('illustration_file', '')
+        illus_desc = data.get('illustration_desc', 'איור')
+        illus_title = "איור - אטלס גולגולת"
+
+        html += f'''
+
+      <div class="glass sec" style="--ac:{data['color'].lower()}">
+        <div class="grid">
+          <div>
+            <h2>תקציר</h2>
+            <p>{data['summary']}</p>
+          </div>
+          <div>'''
+
+        # Add illustration in the grid
+        if illus_file.startswith('מציין מקום'):
+            # Placeholder box (no image, no credit)
+            html += f'''
+            <h2>{illus_title}</h2>
+            <p class="sub">{illus_desc}</p>
+            <div class="viewer"><div>
+              <p><b>מקום שמור לאיור</b></p>
+              <p class="small">בפיילוט הזה אין עדיין איור CC מאומת - האזור מסמן מקום בלבד</p>
+            </div></div>'''
+        else:
+            # Actual illustration with image and credit
+            illus_filename = illus_file.split('/')[-1]
+            illus_path = f"../assets/knowbody-atlas/{illus_filename}"
+            html += f'''
+            <h2>{illus_title}</h2>
+            <p class="sub">{illus_desc}</p>
+            <img src="{illus_path}" alt="{illus_desc}" class="atlas-img">
+            <p class="credit">UBC Clinical Anatomy via LibreTexts, CC BY-NC-SA 4.0</p>'''
+
+        html += '''
+          </div>
+        </div>
+      </div>'''
+
     html += f'''
 
       <div class="glass sec" style="--ac:{data['color'].lower()}">'''
-
-    # Generate content based on page type
-    page_type = data.get('page_type', 'muscle')
 
     if page_type == 'muscle':
         # OIAI table for muscles
@@ -504,19 +544,12 @@ def generate_html(data: Dict, shared_dir: str) -> str:
         <div class="clinical"><p>{data['clinical']}</p></div>
       </div>'''
 
-    # Add illustration if present
-    if 'illustration_file' in data and data['illustration_file']:
+    # Add illustration if present (only for muscle pages - foramina has it in grid above)
+    page_type = data.get('page_type', 'muscle')
+    if page_type == 'muscle' and 'illustration_file' in data and data['illustration_file']:
         illus_file = data['illustration_file']
         illus_desc = data.get('illustration_desc', 'איור')
-
-        # Determine illustration section title based on page type
-        page_type = data.get('page_type', 'muscle')
-        if page_type == 'muscle':
-            illus_title = "איור - אטלס שרירי כתף"
-        elif page_type == 'foramina':
-            illus_title = "איור - אטלס גולגולת"
-        else:
-            illus_title = "איור"
+        illus_title = "איור - אטלס שרירי כתף"
 
         # Check if this is a placeholder or actual illustration
         if illus_file.startswith('מציין מקום'):
