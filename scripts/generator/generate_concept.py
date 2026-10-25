@@ -398,6 +398,10 @@ def generate_html(data: Dict, shared_dir: str) -> str:
       <h3>נושאי גולגולת</h3>
       <a href="skull-foramina.html"><span class="dot" style="background:#1e3a8a"></span>חרירי גולגולת</a>
       <a href="orbit.html"><span class="dot" style="background:#1e3a8a"></span>ארובת העין</a>
+      <a href="nasal-cavity.html"><span class="dot" style="background:#1e3a8a"></span>חלל אף גרמי</a>
+      <a href="scalp-meninges.html"><span class="dot" style="background:#1e3a8a"></span>קרקפת וקרומי מוח</a>
+      <a href="cerebral-venous-drainage.html"><span class="dot" style="background:#1e3a8a"></span>ניקוז ורידי במוח</a>
+      <a href="cranial-nerves.html"><span class="dot" style="background:#1e3a8a"></span>עצבים קרניאליים</a>
       <h3>החפיסות שלי</h3>
       <a href="decks.html#topic">עצבים קרניאליים</a>
       <a href="decks.html#topic">חרירי גולגולת</a>

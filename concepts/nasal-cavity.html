@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חלל אף גרמי | Knowbody - דפי מושג</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html { direction: rtl; }
+body { font-family: "Heebo", "Segoe UI", Arial, sans-serif; margin: 0; line-height: 1.85; font-size: 19px; color: #111827; text-align: right; background: #f4eee1; }
+a { color: #1e3a8a; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.topbar { background: linear-gradient(180deg, rgba(46,74,178,0.96), rgba(30,58,138,0.92)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.28); box-shadow: 0 10px 30px rgba(30,58,138,0.35), inset 0 1px 0 rgba(255,255,255,0.35); color: #fff; position: sticky; top: 0; z-index: 10; }
+.topbar-in { max-width: 1180px; margin: auto; padding: 14px 18px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 22px; color: #fff; text-decoration: none; }
+.brand:hover { text-decoration: none; }
+.brand-logo { height: 36px; width: auto; }
+.brand small { display: block; font-size: 13px; font-weight: 500; color: #cde8ee; line-height: 1.3; }
+.topnav { display: flex; gap: 6px; flex-wrap: wrap; }
+.topnav a { color: #dbeafe; text-decoration: none; font-size: 16px; font-weight: 500; padding: 8px 13px; border-radius: 20px; }
+.topnav a.active, .topnav a:hover { background: rgba(255,255,255,0.18); color: #fff; text-decoration: none; }
+.search { margin-inline-start: auto; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 20px; padding: 8px 14px; font-size: 15px; font-family: inherit; min-width: 210px; }
+.search::placeholder { color: #d7eef4; }
+.wrap { max-width: 1180px; margin: auto; padding: 24px 18px 40px; }
+.layout { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: start; }
+.crumb { font-size: 15px; color: #4b5563; margin-bottom: 16px; }
+.crumb a { color: #1e3a8a; }
+.side { background: #fffdf8; border: 1px solid #e7ddc8; border-radius: 18px; padding: 20px; position: sticky; top: 76px; }
+.side h3 { font-size: 16px; margin: 20px 0 10px; color: #1e3a8a; }
+.side h3:first-child { margin-top: 0; }
+.side a { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #374151; font-size: 16px; padding: 9px 12px; border-radius: 10px; }
+.side a:hover { background: #f4eee1; text-decoration: none; }
+.side a.active { background: #1e3a8a; color: #fff; font-weight: 700; }
+.side .dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.hero { position: relative; overflow: hidden; border-radius: 24px; padding: 38px; background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 12px 32px rgba(17,24,39,0.08); }
+.hero::after { content: ""; display: block; height: 5px; margin-top: 22px; border-radius: 5px; background: linear-gradient(90deg, #e11d48, #d97706, #65a30d, #0891b2, #7c3aed); }
+.hero h1 { font-size: 42px; font-weight: 900; line-height: 1.25; margin: 10px 0; }
+.hero .latin { direction: ltr; text-align: right; font-size: 20px; font-weight: 700; color: #1e3a8a; }
+.hero p { margin: 14px 0 0; color: #374151; max-width: 700px; }
+.pilot { display: inline-block; background: #1e3a8a; color: #fff; font-size: 14px; font-weight: 700; padding: 6px 13px; border-radius: 20px; }
+.glass { background: #ffffff; border: 1px solid #e5e7eb; border-top: 4px solid var(--ac, #1e3a8a); border-radius: 20px; padding: 28px; margin-top: 28px; box-shadow: 0 10px 28px rgba(17,24,39,0.07); }
+.sec h2 { font-size: 25px; font-weight: 900; margin: 0 0 16px; padding-right: 14px; border-right: 5px solid var(--ac, #1e3a8a); }
+.sec p { color: #1f2937; }
+table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 17px; overflow: hidden; border-radius: 12px; }
+td, th { border-bottom: 1px solid #e5e7eb; padding: 13px 14px; text-align: right; vertical-align: top; }
+tr:last-child td, tr:last-child th { border-bottom: none; }
+th { width: 150px; color: #111827; font-weight: 700; border-right: 5px solid var(--rc, #e11d48); background: #f3f4f6; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.viewer { background: #111827; color: #fff; border-radius: 14px; min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+.viewer p { color: #ffffff; }
+.viewer .small { font-size: 15px; color: #d1d5db; }
+.clinical { background: #fff1f2; border: 1px solid #e11d48; border-radius: 14px; padding: 20px 22px; }
+.clinical p { margin: 0; }
+.quiz details { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 17px; margin: 12px 0; }
+.quiz summary { cursor: pointer; font-weight: 700; color: #111827; }
+.quiz summary:hover { color: #1e3a8a; }
+.decks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.deck { border-radius: 14px; padding: 18px; background: #f9fafb; border: 1px solid #e5e7eb; border-top: 5px solid var(--c); }
+.deck b { display: block; font-size: 17px; }
+.deck span { font-size: 15px; color: #4b5563; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; font-size: 15px; font-weight: 500; }
+.legend span { padding: 6px 12px; border-radius: 20px; background: #f3f4f6; border: 1px solid #e5e7eb; }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-left: 7px; vertical-align: middle; }
+.note { font-size: 15px; color: #4b5563; margin-top: 26px; }
+.sub { font-size: 17px; color: #4b5563; }
+ul { margin: 10px 0; padding-right: 22px; }
+li { margin: 6px 0; }
+.atlas-img { width: 100%; height: auto; display: block; border-radius: 12px; }
+.credit { font-size: 14px; color: #6b7280; margin-top: 8px; text-align: center; }
+svg { width: 100%; height: auto; display: block; }
+.footbar { background: linear-gradient(180deg, #2e4ab2, #1e3a8a); border-top: 1px solid rgba(255,255,255,0.28); color: #dbeafe; margin-top: 20px; }
+.footbar-in { max-width: 1180px; margin: auto; padding: 28px 18px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; font-size: 15px; }
+.footbar b { color: #fff; font-size: 16px; }
+.footbar a { color: #dbeafe; display: block; margin: 6px 0; }
+.footbar a:hover { color: #fff; }
+.menu-toggle { display: none; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); color: #fff; border-radius: 10px; padding: 8px 14px; font-size: 22px; cursor: pointer; margin-inline-start: auto; }
+.menu-toggle:hover { background: rgba(255,255,255,0.22); }
+.mobile-menu { display: none; background: linear-gradient(180deg, rgba(46,74,178,0.98), rgba(30,58,138,0.95)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,0.18); box-shadow: 0 8px 20px rgba(30,58,138,0.3); padding: 12px 18px; }
+.mobile-menu.open { display: block; }
+.mobile-menu a, .mobile-menu span { display: block; color: #dbeafe; text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: 12px; margin: 4px 0; }
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(255,255,255,0.18); color: #fff; }
+.mobile-menu span { opacity: 0.7; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { position: static; order: -1; }
+  .grid, .decks, .footbar-in { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+  .hero, .glass { padding: 22px; }
+  .search { min-width: 0; width: 100%; }
+  th { width: 110px; }
+  body { font-size: 18px; }
+  .brand-logo { height: 30px; }
+  .topnav { display: none; }
+  .menu-toggle { display: block; }
+}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../index.html">
+      <img class="brand-logo" src="../assets/knowbody-logo/knowbody-logo-H-topbar.svg" alt="Knowbody">
+      <span><small>דפי מושג • שנה ב'</small></span>
+    </a>
+    <nav class="topnav">
+      <a href="supraspinatus.html" class="active">דפי מושג</a>
+      <span style="color: #dbeafe; font-size: 16px; font-weight: 500; padding: 8px 13px;">מערכות הגוף</span>
+      <a href="decks.html">חפיסות</a>
+      <span style="color: #dbeafe; font-size: 16px; font-weight: 500; padding: 8px 13px;">ההתקדמות שלי</span>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="תפריט ניווט" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="supraspinatus.html" class="active">דפי מושג</a>
+    <span>מערכות הגוף</span>
+    <a href="decks.html">חפיסות</a>
+    <span>ההתקדמות שלי</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="crumb"><span>מערכות הגוף</span> &gt; <span>ראש וצוואר</span> &gt; <span>גולגולת</span> &gt; חלל אף גרמי</div>
+  <div class="layout">
+    <aside class="side">
+      <h3>ניווט</h3>
+      <a href="../index.html">דף הבית</a>
+      <a href="skull-foramina.html">גולגולת וראש-צוואר</a>
+      <a href="decks.html">חפיסות</a>
+      <h3>נושאי גולגולת</h3>
+      <a href="skull-foramina.html"><span class="dot" style="background:#1e3a8a"></span>חרירי גולגולת</a>
+      <a href="orbit.html"><span class="dot" style="background:#1e3a8a"></span>ארובת העין</a>
+      <a href="nasal-cavity.html"><span class="dot" style="background:#1e3a8a"></span>חלל אף גרמי</a>
+      <a href="scalp-meninges.html"><span class="dot" style="background:#1e3a8a"></span>קרקפת וקרומי מוח</a>
+      <a href="cerebral-venous-drainage.html"><span class="dot" style="background:#1e3a8a"></span>ניקוז ורידי במוח</a>
+      <a href="cranial-nerves.html"><span class="dot" style="background:#1e3a8a"></span>עצבים קרניאליים</a>
+      <h3>החפיסות שלי</h3>
+      <a href="decks.html#topic">עצבים קרניאליים</a>
+      <a href="decks.html#topic">חרירי גולגולת</a>
+      <a href="decks.html#topic">עצמות הגולגולת</a>
+    </aside>
+
+    <main>
+      <div class="hero">
+        <span class="pilot">פיילוט - Knowbody דפי מושג</span>
+        <h1>חלל אף גרמי</h1>
+        <div class="latin">Nasal Cavity (Bony Nasal Cavity)</div>
+      </div>
+
+      <div class="glass sec" style="--ac:#1e3a8a; padding: 18px 24px;">
+        <p style="margin:0;"><b>כרטיסיות לנושא זה:</b> הבחירה קורית בדף החפיסות הראשי, לפני שנכנסים לדף המושג - לא כאן. <a href="decks.html#topic">לדף החפיסות</a>.</p>
+      </div>
+
+      <div class="glass sec" style="--ac:#1e3a8a">
+        <div class="grid">
+          <div>
+            <h2>תקציר</h2>
+            <p>חלל האף הגרמי הוא חלל מרכזי בגולגולת הפנים, המחולק לשני צדדים על ידי מחיצה גרמית-סחוסית, ונפתח קדימה בפתח אגסי (Piriform aperture) ואחורה בפתחי אף אחוריים (Choanae). דפנותיו נבנות מעצמות הפנים והבסיס (ethmoid, maxilla, palatine, sphenoid ועוד), ועל הדופן הלטרלית שלוש קונכיות שמתחתיהן מעברים שאליהם נפתחים הסינוסים.</p>
+          </div>
+          <div>
+            <h2>איור - אטלס גולגולת</h2>
+            <p class="sub">חתך סגיטלי של חלל האף עם סימון המחיצה, שלוש הקונכיות והמעברים, ומבט קדמי עם ה-piriform aperture</p>
+            <div class="viewer"><div>
+              <p><b>מקום שמור לאיור</b></p>
+              <p class="small">בפיילוט הזה אין עדיין איור CC מאומת - האזור מסמן מקום בלבד</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass sec" style="--ac:#1e3a8a">
+        <h2>טבלאות מפתח - חלל אף גרמי</h2>
+        <h3>העצמות והדפנות</h3>
+        <div style="overflow-x: auto;">
+<table>
+  <thead>
+    <tr><th>עצם</th><th>שם עברי</th><th>תרומה לחלל האף</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ethmoid</td><td>עצם הכברה</td><td>הגג (cribriform plate), החלק העליון של המחיצה (הלוח האנכי / Perpendicular plate), קונכיה עליונה ואמצעית</td></tr>
+    <tr><td>Maxilla</td><td>לסת עליונה</td><td>רוב הדופן הלטרלית; הרצפה (palatine process)</td></tr>
+    <tr><td>Palatine</td><td>עצם החך</td><td>הרצפה האחורית (horizontal plate); הדופן הלטרלית האחורית (הלוח האנכי / Perpendicular plate)</td></tr>
+    <tr><td>Sphenoid</td><td>עצם היתד</td><td>הגג האחורי (פני הגוף הקדמיים); סביבת שקע ספנו-אתמואידלי (Sphenoethmoidal recess)</td></tr>
+    <tr><td>Frontal</td><td>עצם המצח</td><td>חלק קדמי של הגג</td></tr>
+    <tr><td>Nasal bone</td><td>עצם האף</td><td>הגג הקדמי (גשר האף)</td></tr>
+    <tr><td>Lacrimal</td><td>עצם הדמע</td><td>הדופן הלטרלית הקדמית; nasolacrimal canal</td></tr>
+    <tr><td>Vomer</td><td>מחרשה</td><td>החלק האחורי-תחתון של המחיצה</td></tr>
+    <tr><td>Inferior nasal concha</td><td>קונכיית אף תחתונה</td><td>עצם נפרדת; הקונכיה התחתונה</td></tr>
+  </tbody>
+</table>
+        </div>
+        <h3>המחיצה הגרמית</h3>
+        <div style="overflow-x: auto;">
+<table>
+  <thead>
+    <tr><th>מרכיב</th><th>סוג</th><th>מיקום</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>הלוח האנכי (Perpendicular plate)</td><td>עצם</td><td>עליון-קדמי</td></tr>
+    <tr><td>מחרשה (Vomer)</td><td>עצם</td><td>אחורי-תחתון</td></tr>
+    <tr><td>סחוס המחיצה (Septal cartilage)</td><td>סחוס, לא עצם</td><td>קדמי; משלים את המחיצה בגולגולת חיה</td></tr>
+  </tbody>
+</table>
+        </div>
+        <h3>קונכיות ומעברים</h3>
+        <div style="overflow-x: auto;">
+<table>
+  <thead>
+    <tr><th>קונכיה</th><th>עצם</th><th>המעבר שמתחתיה</th><th>מה נפתח אליו</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>קונכיית אף עליונה (Superior nasal concha)</td><td>עצם הכברה</td><td>מעבר אף עליון (Superior meatus)</td><td>Posterior ethmoidal cells</td></tr>
+    <tr><td>קונכיית אף אמצעית (Middle nasal concha)</td><td>עצם הכברה</td><td>מעבר אף אמצעי (Middle meatus)</td><td>Frontal sinus, maxillary sinus, anterior ו-middle ethmoidal cells (דרך hiatus semilunaris)</td></tr>
+    <tr><td>קונכיית אף תחתונה (Inferior nasal concha)</td><td>עצם נפרדת</td><td>מעבר אף תחתון (Inferior meatus)</td><td>Nasolacrimal duct</td></tr>
+    <tr><td>מעל הקונכיה העליונה</td><td>עצם היתד</td><td>שקע ספנו-אתמואידלי (Sphenoethmoidal recess)</td><td>Sphenoidal sinus</td></tr>
+  </tbody>
+</table>
+        </div>
+        <h3>פתחי חלל האף הגרמי</h3>
+        <div style="overflow-x: auto;">
+<table>
+  <thead>
+    <tr><th>פתח</th><th>מיקום</th><th>הערה</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>פתח אגסי (Piriform aperture)</td><td>קדמי</td><td>הפתח הגרמי הקדמי, בין עצם האף (Nasal bone) וה-maxilla</td></tr>
+    <tr><td>פתחי אף אחוריים (Choanae)</td><td>אחורי</td><td>נפתחים לאף-לוע; גובלים במחרשה (Vomer), ב-sphenoid, ב-palatine וב-medial pterygoid plate</td></tr>
+    <tr><td>נקבי המסננת (Cribriform foramina)</td><td>גג</td><td>דרכם עוברים סיבי הריח (CN I)</td></tr>
+    <tr><td>נקב ספנופלטיני (Sphenopalatine foramen)</td><td>דופן לטרלית אחורית</td><td>בין ה-palatine וה-sphenoid; מחבר ל-pterygopalatine fossa</td></tr>
+    <tr><td>תעלת החותכות (Incisive canal)</td><td>רצפה קדמית</td><td>מחבר לחלל הפה, ליד קו האמצע</td></tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+
+      <div class="glass sec" style="--ac:#65a30d">
+        <h2>נקודה קלינית</h2>
+        <div class="clinical"><p>סטייה של מחיצת האף (deviated septum) נפוצה, והיא עלולה לצמצם צד אחד ולהקשות על הנשימה ועל ניקוז הסינוסים. שבר ב-cribriform plate, למשל בטראומה לראש, עלול לקרוע את סיבי הריח ולגרום לאובדן חוש הריח, ובמקרים מסוימים לדליפת נוזל שדרתי מהאף (CSF rhinorrhea).</p></div>
+      </div>
+
+      <div class="glass sec quiz" style="--ac:#7c3aed">
+        <h2>בדוק את עצמך - למידה אקטיבית</h2>
+        <p>לחצי על כל שאלה כדי לחשוף את התשובה, כמו תווית נסתרת בכרטיסייה.</p>
+        <details><summary>אילו עצמות בונות את המחיצה הגרמית של האף, ומה החלק הלא-גרמי שלה?</summary><p>המחיצה הגרמית נבנית מהלוח האנכי (Perpendicular plate) של עצם הכברה (עליון) וממחרשה (Vomer) (אחורי-תחתון). החלק הקדמי הוא סחוס המחיצה (Septal cartilage), שהוא סחוס ולא עצם.</p></details>
+        <details><summary>איזו קונכיה היא עצם נפרדת, ואילו קונכיות שייכות לעצם הכברה?</summary><p>הקונכיה התחתונה (קונכיית אף תחתונה / Inferior nasal concha) היא עצם נפרדת. הקונכיה העליונה והאמצעית הן חלק מעצם הכברה.</p></details>
+        <details><summary>איזה מבנה נפתח אל מעבר אף תחתון (Inferior meatus), ואילו סינוסים נפתחים אל מעבר אף אמצעי (Middle meatus)?</summary><p>אל מעבר אף תחתון (Inferior meatus) נפתח ה-nasolacrimal duct. אל מעבר אף אמצעי (Middle meatus) נפתחים ה-frontal sinus וה-maxillary sinus, וגם ה-anterior ו-middle ethmoidal cells.</p></details>
+      </div>
+
+      <div class="glass sec" style="--ac:#d97706">
+        <h2>חפיסות קשורות</h2>
+        <p class="sub">שמות חפיסות בלבד, בלי קישורים מומצאים.</p>
+        <div class="decks">
+          <div class="deck" style="--c:#e11d48"><b>עצמות הגולגולת - זיהוי וסימני דרך</b><span>חפיסה</span></div>
+          <div class="deck" style="--c:#0891b2"><b>חרירי גולגולת ומבנים עוברים</b><span>חפיסה</span></div>
+        </div>
+      </div>
+
+      <div class="note"><b>הערת פיילוט:</b> נבדק מול Kenhub ו-TeachMeAnatomy (בעמודים שנגישים בלבד) וידע אנטומי סטנדרטי; ממתין לבדיקת מירי. שמות עבריים לפי המילון בלבד; מונחי ההיקף הושלמו ממילון Knowbody המאושר</div>
+    </main>
+  </div>
+</div>
+
+<footer class="footbar">
+  <div class="footbar-in">
+    <div><b>Knowbody - דפי מושג</b><br>לימוד לפי מערכות, מושג אחד בכל פעם. קודם בוחרים חפיסה בדף הראשי, ורק אחר כך נכנסים לדף מושג.</div>
+    <div><b>ניווט</b><a href="supraspinatus.html">דפי מושג</a><a href="decks.html">חפיסות</a><a href="../index.html">חזרה למחברת</a></div>
+    <div><b>מקורות</b><a href="https://flashcards-bd849.web.app">אפליקציית הכרטיסיות</a><span style="color: #dbeafe; display: block; margin: 6px 0;">היקף לפי חומרי הקורס; עובדות מאומתות מול אתרים ותיקים.</span></div>
+  </div>
+</footer>
+<script>
+(function() {
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    toggle.textContent = '☰';
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    menu.classList.add('open');
+    toggle.textContent = '✕';
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (menu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== toggle) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+})();
+
+</script>
+</body>
+</html>
