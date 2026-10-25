@@ -6,12 +6,12 @@
 - שם לטיני: Nasal Cavity (Bony Nasal Cavity)
 - מערכת: ראש וצוואר - גולגולת
 - צבע המבנה: כחול מלכותי #1E3A8A
-- סטטוס אימות: נבדק מול Kenhub ו-TeachMeAnatomy (בעמודים שנגישים בלבד) וידע אנטומי סטנדרטי; ממתין לבדיקת מירי. שמות עבריים לפי המילון בלבד; מונחים שחסרים בו מופיעים באנגלית
+- סטטוס אימות: נבדק מול Kenhub ו-TeachMeAnatomy (בעמודים שנגישים בלבד) וידע אנטומי סטנדרטי; ממתין לבדיקת מירי. שמות עבריים לפי המילון בלבד; מונחי ההיקף הושלמו ממילון Knowbody המאושר
 - היקף לפי חומרי הקורס: שלד גרמי בלבד - עצמות, מחיצה, קונכיות ומעברים גרמיים, פתחים. רירית ועצבוב בפירוט מחוץ להיקף
 
 ## 2. תקציר - 2 משפטים
 
-חלל האף הגרמי הוא חלל מרכזי בגולגולת הפנים, המחולק לשני צדדים על ידי מחיצה גרמית-סחוסית, ונפתח קדימה ב-piriform aperture ואחורה ב-choanae. דפנותיו נבנות מעצמות הפנים והבסיס (ethmoid, maxilla, palatine, sphenoid ועוד), ועל הדופן הלטרלית שלוש קונכיות שמתחתיהן מעברים שאליהם נפתחים הסינוסים.
+חלל האף הגרמי הוא חלל מרכזי בגולגולת הפנים, המחולק לשני צדדים על ידי מחיצה גרמית-סחוסית, ונפתח קדימה בפתח אגסי (Piriform aperture) ואחורה בפתחי אף אחוריים (Choanae). דפנותיו נבנות מעצמות הפנים והבסיס (ethmoid, maxilla, palatine, sphenoid ועוד), ועל הדופן הלטרלית שלוש קונכיות שמתחתיהן מעברים שאליהם נפתחים הסינוסים.
 
 ## 3. טבלאות מפתח - חלל אף גרמי
 
@@ -19,42 +19,42 @@
 
 | עצם | שם עברי | תרומה לחלל האף |
 |-----|---------|----------------|
-| Ethmoid | עצם הכברה | הגג (cribriform plate), החלק העליון של המחיצה (perpendicular plate), קונכיה עליונה ואמצעית |
+| Ethmoid | עצם הכברה | הגג (cribriform plate), החלק העליון של המחיצה (הלוח האנכי / Perpendicular plate), קונכיה עליונה ואמצעית |
 | Maxilla | לסת עליונה | רוב הדופן הלטרלית; הרצפה (palatine process) |
-| Palatine | עצם החך | הרצפה האחורית (horizontal plate); הדופן הלטרלית האחורית (perpendicular plate) |
-| Sphenoid | עצם היתד | הגג האחורי (פני הגוף הקדמיים); סביבת ה-sphenoethmoidal recess |
+| Palatine | עצם החך | הרצפה האחורית (horizontal plate); הדופן הלטרלית האחורית (הלוח האנכי / Perpendicular plate) |
+| Sphenoid | עצם היתד | הגג האחורי (פני הגוף הקדמיים); סביבת שקע ספנו-אתמואידלי (Sphenoethmoidal recess) |
 | Frontal | עצם המצח | חלק קדמי של הגג |
-| Nasal bone | מונח חסר | הגג הקדמי (גשר האף) |
+| Nasal bone | עצם האף | הגג הקדמי (גשר האף) |
 | Lacrimal | עצם הדמע | הדופן הלטרלית הקדמית; nasolacrimal canal |
-| Vomer | מונח חסר | החלק האחורי-תחתון של המחיצה |
-| Inferior nasal concha | מונח חסר | עצם נפרדת; הקונכיה התחתונה |
+| Vomer | מחרשה | החלק האחורי-תחתון של המחיצה |
+| Inferior nasal concha | קונכיית אף תחתונה | עצם נפרדת; הקונכיה התחתונה |
 
 ### המחיצה הגרמית
 
 | מרכיב | סוג | מיקום |
 |-------|-----|-------|
-| Perpendicular plate of ethmoid | עצם | עליון-קדמי |
-| Vomer | עצם | אחורי-תחתון |
-| Septal cartilage | סחוס, לא עצם | קדמי; משלים את המחיצה בגולגולת חיה |
+| הלוח האנכי (Perpendicular plate) | עצם | עליון-קדמי |
+| מחרשה (Vomer) | עצם | אחורי-תחתון |
+| סחוס המחיצה (Septal cartilage) | סחוס, לא עצם | קדמי; משלים את המחיצה בגולגולת חיה |
 
 ### קונכיות ומעברים
 
 | קונכיה | עצם | המעבר שמתחתיה | מה נפתח אליו |
 |--------|-----|----------------|---------------|
-| Superior concha | עצם הכברה | Superior meatus | Posterior ethmoidal cells |
-| Middle concha | עצם הכברה | Middle meatus | Frontal sinus, maxillary sinus, anterior ו-middle ethmoidal cells (דרך hiatus semilunaris) |
-| Inferior concha | עצם נפרדת | Inferior meatus | Nasolacrimal duct |
-| מעל הקונכיה העליונה | עצם היתד | Sphenoethmoidal recess | Sphenoidal sinus |
+| קונכיית אף עליונה (Superior nasal concha) | עצם הכברה | מעבר אף עליון (Superior meatus) | Posterior ethmoidal cells |
+| קונכיית אף אמצעית (Middle nasal concha) | עצם הכברה | מעבר אף אמצעי (Middle meatus) | Frontal sinus, maxillary sinus, anterior ו-middle ethmoidal cells (דרך hiatus semilunaris) |
+| קונכיית אף תחתונה (Inferior nasal concha) | עצם נפרדת | מעבר אף תחתון (Inferior meatus) | Nasolacrimal duct |
+| מעל הקונכיה העליונה | עצם היתד | שקע ספנו-אתמואידלי (Sphenoethmoidal recess) | Sphenoidal sinus |
 
 ### פתחי חלל האף הגרמי
 
 | פתח | מיקום | הערה |
 |-----|-------|------|
-| Piriform aperture | קדמי | הפתח הגרמי הקדמי, בין ה-nasal bones וה-maxilla |
-| Choanae | אחורי | נפתחים לאף-לוע; גובלים ב-vomer, ב-sphenoid, ב-palatine וב-medial pterygoid plate |
+| פתח אגסי (Piriform aperture) | קדמי | הפתח הגרמי הקדמי, בין עצם האף (Nasal bone) וה-maxilla |
+| פתחי אף אחוריים (Choanae) | אחורי | נפתחים לאף-לוע; גובלים במחרשה (Vomer), ב-sphenoid, ב-palatine וב-medial pterygoid plate |
 | נקבי המסננת (Cribriform foramina) | גג | דרכם עוברים סיבי הריח (CN I) |
-| Sphenopalatine foramen | דופן לטרלית אחורית | בין ה-palatine וה-sphenoid; מחבר ל-pterygopalatine fossa |
-| Incisive canal | רצפה קדמית | מחבר לחלל הפה, ליד קו האמצע |
+| נקב ספנופלטיני (Sphenopalatine foramen) | דופן לטרלית אחורית | בין ה-palatine וה-sphenoid; מחבר ל-pterygopalatine fossa |
+| תעלת החותכות (Incisive canal) | רצפה קדמית | מחבר לחלל הפה, ליד קו האמצע |
 
 ## 4. משמעות קלינית - תיבה נפרדת
 
@@ -71,13 +71,13 @@
 ## 6. למידה אקטיבית - בוחן / תוויות נסתרות
 
 1. אילו עצמות בונות את המחיצה הגרמית של האף, ומה החלק הלא-גרמי שלה?
-   המחיצה הגרמית נבנית מה-perpendicular plate של עצם הכברה (עליון) ומה-vomer (אחורי-תחתון). החלק הקדמי הוא septal cartilage, שהוא סחוס ולא עצם.
+   המחיצה הגרמית נבנית מהלוח האנכי (Perpendicular plate) של עצם הכברה (עליון) וממחרשה (Vomer) (אחורי-תחתון). החלק הקדמי הוא סחוס המחיצה (Septal cartilage), שהוא סחוס ולא עצם.
 
 2. איזו קונכיה היא עצם נפרדת, ואילו קונכיות שייכות לעצם הכברה?
-   הקונכיה התחתונה (inferior concha) היא עצם נפרדת. הקונכיה העליונה והאמצעית הן חלק מעצם הכברה.
+   הקונכיה התחתונה (קונכיית אף תחתונה / Inferior nasal concha) היא עצם נפרדת. הקונכיה העליונה והאמצעית הן חלק מעצם הכברה.
 
-3. איזה מבנה נפתח אל ה-inferior meatus, ואילו סינוסים נפתחים אל ה-middle meatus?
-   אל ה-inferior meatus נפתח ה-nasolacrimal duct. אל ה-middle meatus נפתחים ה-frontal sinus וה-maxillary sinus, וגם ה-anterior ו-middle ethmoidal cells.
+3. איזה מבנה נפתח אל מעבר אף תחתון (Inferior meatus), ואילו סינוסים נפתחים אל מעבר אף אמצעי (Middle meatus)?
+   אל מעבר אף תחתון (Inferior meatus) נפתח ה-nasolacrimal duct. אל מעבר אף אמצעי (Middle meatus) נפתחים ה-frontal sinus וה-maxillary sinus, וגם ה-anterior ו-middle ethmoidal cells.
 
 ## 7. חפיסות קשורות - שמות בלבד
 
@@ -86,10 +86,10 @@
 
 ## 8. וריאנטים אנטומיים וסתירות בין מקורות
 
-- **שיוך עצמות לדפנות**: עמוד Kenhub שנבדק מונה את העצמות (ethmoid, sphenoid, frontal, vomer, nasal, maxilla, palatine, lacrimal, inferior concha) בלי לשייך כל עצם לדופן. השיוך בטבלה לפי ידע אנטומי סטנדרטי ולא הושווה סעיף-סעיף בין שלושת המקורות.
+- **שיוך עצמות לדפנות**: עמוד Kenhub שנבדק מונה את העצמות (ethmoid, sphenoid, frontal, מחרשה (Vomer), nasal, maxilla, palatine, lacrimal, קונכיית אף תחתונה (Inferior nasal concha)) בלי לשייך כל עצם לדופן. השיוך בטבלה לפי ידע אנטומי סטנדרטי ולא הושווה סעיף-סעיף בין שלושת המקורות.
 - **Supreme concha**: חלק מהמקורות מזכירים קונכיה נוספת מעל העליונה כוריאנט שמופיע אצל חלק מהאנשים. לא נכללה בטבלה.
-- **ספירת מבנים**: האם ה-septal cartilage נכלל ב"מחיצה" תלוי במקור. כאן הוא מופיע בנפרד כסחוס.
-- **Sphenoethmoidal recess**: מקורות מסוימים מתארים אותו כחלק מהמעבר העליון ואחרים כמבנה נפרד. לא הוכרע.
+- **ספירת מבנים**: האם סחוס המחיצה (Septal cartilage) נכלל ב"מחיצה" תלוי במקור. כאן הוא מופיע בנפרד כסחוס.
+- **שקע ספנו-אתמואידלי (Sphenoethmoidal recess)**: מקורות מסוימים מתארים אותו כחלק מהמעבר העליון ואחרים כמבנה נפרד. לא הוכרע.
 - StatPearls לא נבדק לנושא זה (לא נגיש בבדיקה).
 
 ## 9. מקורות - לא להעתיק מהם טקסט

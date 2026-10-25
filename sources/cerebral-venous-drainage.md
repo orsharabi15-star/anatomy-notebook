@@ -6,12 +6,12 @@
 - שם לטיני: Dural Venous Sinuses and Cerebral Venous Drainage
 - מערכת: ראש וצוואר - גולגולת
 - צבע המבנה: כחול מלכותי #1E3A8A
-- סטטוס אימות: נבדק מול TeachMeAnatomy (Dural venous sinuses) והתקציר של StatPearls; ממתין לבדיקת מירי. שמות עבריים לפי המילון בלבד; מונחים שחסרים בו מופיעים באנגלית
+- סטטוס אימות: נבדק מול TeachMeAnatomy (Dural venous sinuses) והתקציר של StatPearls; ממתין לבדיקת מירי. שמות עבריים לפי המילון בלבד; מונחי ההיקף הושלמו ממילון Knowbody המאושר
 - היקף לפי חומרי הקורס: סינוסים ורידיים וניקוז ראשי בלבד. ורידי המוח עצמם בפירוט מחוץ להיקף
 
 ## 2. תקציר - 2 משפטים
 
-הסינוסים הוורידיים של ה-dura הם תעלות ורידיות בין שתי שכבות ה-dura mater, שאוספות דם מהמוח ומהגולגולת. רובם מתנקזים דרך הצומת (confluence of sinuses) אל ה-transverse sinus, ה-sigmoid sinus ולבסוף אל ה-internal jugular vein דרך נקב הצוואר.
+הסינוסים הוורידיים של קרום קשה (Dura mater) הם תעלות ורידיות בין שתי שכבות קרום קשה (Dura mater), שאוספות דם מהמוח ומהגולגולת. רובם מתנקזים דרך הצומת (מפגש הסינוסים / Confluence of sinuses) אל סינוס רוחבי (Transverse sinus), סינוס סיגמואידי (Sigmoid sinus) ולבסוף אל וריד הצוואר הפנימי (Internal jugular vein) דרך נקב הצוואר.
 
 ## 3. טבלאות מפתח - ניקוז ורידי במוח
 
@@ -19,34 +19,34 @@
 
 | סינוס | מיקום | מתנקז אל |
 |-------|-------|-----------|
-| Superior sagittal | קצה עליון של ה-falx cerebri | Confluence of sinuses |
-| Inferior sagittal | קצה תחתון של ה-falx cerebri | Straight sinus |
-| Straight | מפגש ה-falx cerebri וה-tentorium cerebelli | Confluence of sinuses |
-| Occipital | בתוך ה-falx cerebelli | Confluence of sinuses |
-| Intercavernous | מחבר את שני ה-cavernous sinuses | Cavernous sinuses |
+| סינוס סגיטלי עליון (Superior sagittal sinus) | קצה עליון של מגל המוח (Falx cerebri) | מפגש הסינוסים (Confluence of sinuses) |
+| סינוס סגיטלי תחתון (Inferior sagittal sinus) | קצה תחתון של מגל המוח (Falx cerebri) | סינוס ישר (Straight sinus) |
+| סינוס ישר (Straight sinus) | מפגש מגל המוח (Falx cerebri) ואוהל המוחון (Tentorium cerebelli) | מפגש הסינוסים (Confluence of sinuses) |
+| סינוס עורפי (Occipital sinus) | בתוך ה-falx cerebelli | מפגש הסינוסים (Confluence of sinuses) |
+| סינוס בין-מערתי (Intercavernous sinus) | מחבר את שני הסינוסים המערתיים (סינוס מערתי / Cavernous sinus) | סינוס מערתי (Cavernous sinus) |
 
 ### סינוסים זוגיים
 
 | סינוס | מיקום | מתנקז אל |
 |-------|-------|-----------|
-| Transverse | שולי ה-tentorium cerebelli, לאורך עצם העורף | Sigmoid sinus |
-| Sigmoid | משטח פנימי של עצם הרקה (petrous), צורת S | Internal jugular vein, דרך נקב הצוואר |
-| Cavernous | בבסיס הגולגולת, ליד עצם היתד | Superior ו-inferior petrosal sinuses |
-| Superior petrosal | קצה עליון של עצם הרקה (petrous) | Transverse sinus |
-| Inferior petrosal | בין עצם הרקה לעצם העורף | Internal jugular vein, ליד נקב הצוואר |
+| סינוס רוחבי (Transverse sinus) | שולי אוהל המוחון (Tentorium cerebelli), לאורך עצם העורף | סינוס סיגמואידי (Sigmoid sinus) |
+| סינוס סיגמואידי (Sigmoid sinus) | משטח פנימי של עצם הרקה (petrous), צורת S | וריד הצוואר הפנימי (Internal jugular vein), דרך נקב הצוואר |
+| סינוס מערתי (Cavernous sinus) | בבסיס הגולגולת, ליד עצם היתד | סינוס פטרוזלי עליון (Superior petrosal sinus) וסינוס פטרוזלי תחתון (Inferior petrosal sinus) |
+| סינוס פטרוזלי עליון (Superior petrosal sinus) | קצה עליון של עצם הרקה (petrous) | סינוס רוחבי (Transverse sinus) |
+| סינוס פטרוזלי תחתון (Inferior petrosal sinus) | בין עצם הרקה לעצם העורף | וריד הצוואר הפנימי (Internal jugular vein), ליד נקב הצוואר |
 
 ### נתיב הניקוז הראשי
 
 | שלב | נתיב |
 |-----|------|
-| 1 | Superior sagittal, straight ו-occipital sinuses אל ה-confluence of sinuses |
-| 2 | Confluence אל ה-transverse sinus ואז אל ה-sigmoid sinus |
-| 3 | Sigmoid sinus דרך נקב הצוואר אל ה-internal jugular vein |
-| 4 | Cavernous sinus דרך ה-superior petrosal אל ה-transverse, או דרך ה-inferior petrosal ישר אל ה-internal jugular vein |
+| 1 | סינוס סגיטלי עליון (Superior sagittal sinus), סינוס ישר (Straight sinus) וסינוס עורפי (Occipital sinus) אל מפגש הסינוסים (Confluence of sinuses) |
+| 2 | מפגש הסינוסים (Confluence of sinuses) אל סינוס רוחבי (Transverse sinus) ואז אל סינוס סיגמואידי (Sigmoid sinus) |
+| 3 | סינוס סיגמואידי (Sigmoid sinus) דרך נקב הצוואר אל וריד הצוואר הפנימי (Internal jugular vein) |
+| 4 | סינוס מערתי (Cavernous sinus) דרך סינוס פטרוזלי עליון (Superior petrosal sinus) אל סינוס רוחבי (Transverse sinus), או דרך סינוס פטרוזלי תחתון (Inferior petrosal sinus) ישר אל וריד הצוואר הפנימי (Internal jugular vein) |
 
 ## 4. משמעות קלינית - תיבה נפרדת
 
-פקקת (thrombosis) ב-cavernous sinus מזוהה לרוב עם זיהום בפנים, ועלולה לפגוע בעצבים העוברים בסמוך כמו CN VI. היא נחשבת הסינוס החשוב ביותר קלינית. פקקת של ה-superior sagittal sinus עלולה לפגוע בניקוז המוח ולגרום ללחץ תוך-גולגולתי מוגבר.
+פקקת (thrombosis) בסינוס מערתי (Cavernous sinus) מזוהה לרוב עם זיהום בפנים, ועלולה לפגוע בעצבים העוברים בסמוך כמו CN VI. היא נחשבת הסינוס החשוב ביותר קלינית. פקקת של סינוס סגיטלי עליון (Superior sagittal sinus) עלולה לפגוע בניקוז המוח ולגרום ללחץ תוך-גולגולתי מוגבר.
 
 ## 5. איור
 
@@ -58,14 +58,14 @@
 
 ## 6. למידה אקטיבית - בוחן / תוויות נסתרות
 
-1. לאן מתנקזים ה-superior sagittal וה-straight sinus, ולאן ממשיך הדם משם?
-   שניהם מתנקזים אל ה-confluence of sinuses. משם ממשיך הדם אל ה-transverse sinus, אל ה-sigmoid sinus ואל ה-internal jugular vein.
+1. לאן מתנקזים סינוס סגיטלי עליון (Superior sagittal sinus) וסינוס ישר (Straight sinus), ולאן ממשיך הדם משם?
+   שניהם מתנקזים אל מפגש הסינוסים (Confluence of sinuses). משם ממשיך הדם אל סינוס רוחבי (Transverse sinus), אל סינוס סיגמואידי (Sigmoid sinus) ואל וריד הצוואר הפנימי (Internal jugular vein).
 
-2. דרך איזה פתח בבסיס הגולגולת יוצא הדם מה-sigmoid sinus?
-   דרך נקב הצוואר (jugular foramen), שם הוא נעשה ל-internal jugular vein.
+2. דרך איזה פתח בבסיס הגולגולת יוצא הדם מסינוס סיגמואידי (Sigmoid sinus)?
+   דרך נקב הצוואר (jugular foramen), שם הוא נעשה לוריד הצוואר הפנימי (Internal jugular vein).
 
-3. אילו שני נתיבים יש ל-cavernous sinus לנקז?
-   דרך ה-superior petrosal sinus אל ה-transverse sinus, ודרך ה-inferior petrosal sinus ישר אל ה-internal jugular vein.
+3. אילו שני נתיבים יש לסינוס מערתי (Cavernous sinus) לנקז?
+   דרך סינוס פטרוזלי עליון (Superior petrosal sinus) אל סינוס רוחבי (Transverse sinus), ודרך סינוס פטרוזלי תחתון (Inferior petrosal sinus) ישר אל וריד הצוואר הפנימי (Internal jugular vein).
 
 ## 7. חפיסות קשורות - שמות בלבד
 
@@ -73,10 +73,10 @@
 
 ## 8. וריאנטים אנטומיים וסתירות בין מקורות
 
-- **מספר הסינוסים**: StatPearls מונה שבעה סינוסים עיקריים (superior sagittal, inferior sagittal, straight, transverse, sigmoid, cavernous, superior petrosal). TeachMeAnatomy מונה עשרה (חמישה לא זוגיים וחמישה זוגיים, כולל occipital, intercavernous ו-inferior petrosal). בטבלאות כאן נכללו כל העשרה, ובמקרה של ספירה נדרשת יש לבדוק מול ההרצאה.
+- **מספר הסינוסים**: StatPearls מונה שבעה סינוסים עיקריים (סינוס סגיטלי עליון (Superior sagittal sinus), סינוס סגיטלי תחתון (Inferior sagittal sinus), סינוס ישר (Straight sinus), סינוס רוחבי (Transverse sinus), סינוס סיגמואידי (Sigmoid sinus), סינוס מערתי (Cavernous sinus), סינוס פטרוזלי עליון (Superior petrosal sinus)). TeachMeAnatomy מונה עשרה (חמישה לא זוגיים וחמישה זוגיים, כולל סינוס עורפי (Occipital sinus), סינוס בין-מערתי (Intercavernous sinus) וסינוס פטרוזלי תחתון (Inferior petrosal sinus)). בטבלאות כאן נכללו כל העשרה, ובמקרה של ספירה נדרשת יש לבדוק מול ההרצאה.
 - **המקור המדויק לספירת StatPearls**: נלקח מתקציר החיפוש בלבד, כי עמוד המאמר המלא לא היה נגיש.
-- **דומיננטיות**: בדרך כלל ה-superior sagittal מתנקז בעיקר ל-transverse הימני וה-straight לשמאלי, אך הדפוס משתנה בין אנשים. לא ממקור שנבדק; ידע סטנדרטי.
-- **ה-cavernous sinus**: TeachMeAnatomy (בעמוד שנבדק) לא מפרט את תוכן הסינוס, רק את הנוטפים אליו. תוכן מפורט הושמט כי הוא מחוץ להיקף.
+- **דומיננטיות**: בדרך כלל סינוס סגיטלי עליון (Superior sagittal sinus) מתנקז בעיקר לסינוס רוחבי (Transverse sinus) הימני וסינוס ישר (Straight sinus) לשמאלי, אך הדפוס משתנה בין אנשים. לא ממקור שנבדק; ידע סטנדרטי.
+- **סינוס מערתי (Cavernous sinus)**: TeachMeAnatomy (בעמוד שנבדק) לא מפרט את תוכן הסינוס, רק את הנוטפים אליו. תוכן מפורט הושמט כי הוא מחוץ להיקף.
 
 ## 9. מקורות - לא להעתיק מהם טקסט
 
