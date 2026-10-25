@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Test outputs
+gold_test_diff.txt
+*.tmp.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
